@@ -1,0 +1,26 @@
+[project]
+name = "pokecode"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Takanashi", email = "nao69alter@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "beautifulsoup4>=4.14.3",
+    "flask>=3.1.2",
+    "mypy>=1.19.1",
+    "requests>=2.32.5",
+    "ruff>=0.14.13",
+]
+
+[project.scripts]
+pokecode = "pokecode:main"
+
+[tool.pokecode]
+logdir = "logs"
+
+[build-system]
+requires = ["uv_build>=0.9.2,<0.10.0"]
+build-backend = "uv_build"
