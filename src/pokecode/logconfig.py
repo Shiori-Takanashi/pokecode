@@ -31,67 +31,71 @@
 import logging
 import sys
 from pathlib import Path
-import shutil
-import tomllib
-from logging.handlers import RotatingFileHandler
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+# import shutil
+# import tomllib
+from logging.handlers import TimedRotatingFileHandler
 
-
-def convert_str_to_path_under_project_root(name: str) -> Path:
-    if "/" or r"\\" in name:
-        raise ValueError("arg is invalid.")
-    cwd: Path = Path(__file__)
-    project_root: Path = cwd.parents[2]
-    return project_root / name
+# PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
-def define_path_of_logfile(logdir: str, basename: str) -> Path:
-    if "/" in basename:
-        raise ValueError("basename is invalid.")
-    if r"\\" in basename:
-        raise ValueError("basename is invalid.")
-
-    project = Path(__file__).parents[2]
-    dirpath = project / logdir
-    if not dirpath.exists():
-        raise NotADirectoryError("directory is not found.")
-    for p in dirpath.glob("app*.log"):
-        suffix = p.stem.removeprefix("app")
-        if suffix.isdigit():
-            pass
-    return
+# def convert_str_to_path_under_project_root(name: str) -> Path:
+#     if "/" or r"\\" in name:
+#         raise ValueError("arg is invalid.")
+#     cwd: Path = Path(__file__)
+#     project_root: Path = cwd.parents[2]
+#     return project_root / name
 
 
-def convert_str_to_path_from_project_root(name: str) -> Path:
-    project_root = Path(__file__).parents[2].resolve(strict=True)
-    return project_root / name
+# def define_path_of_logfile(logdir: str, basename: str) -> Path:
+#     if "/" in basename:
+#         raise ValueError("basename is invalid.")
+#     if r"\\" in basename:
+#         raise ValueError("basename is invalid.")
+
+#     project = Path(__file__).parents[2]
+#     dirpath = project / logdir
+#     if not dirpath.exists():
+#         raise NotADirectoryError("directory is not found.")
+#     for p in dirpath.glob("app*.log"):
+#         suffix = p.stem.removeprefix("app")
+#         if suffix.isdigit():
+#             pass
+#     return
 
 
-def mklogdir(dirpath: str) -> None:
-    """_summary_
-    引数の名前通りのディレクトリを、project_rootに作成する。
-
-    Args:
-        logdir (str): logを格納するディレクトリ名。../などを含む、エラー対応は未実装。
-    """
-    if dirpath.exists():
-        shutil.rmtree(dirpath)
-    dirpath.mkdir(parents=True, exist_ok=False)
+# def convert_str_to_path_from_project_root(name: str) -> Path:
+#     project_root = Path(__file__).parents[2].resolve(strict=True)
+#     return project_root / name
 
 
-def loading_config() -> dict:
-    pyproject = Path("pyptoject.toml")
-    with pyproject.open("rb") as f:
-        data = tomllib.load(f)
-    return data["tool"]["pokecode"]
+# def mklogdir(dirpath: str) -> None:
+#     """_summary_
+#     引数の名前通りのディレクトリを、project_rootに作成する。
+
+#     Args:
+#         logdir (str): logを格納するディレクトリ名。../などを含む、エラー対応は未実装。
+#     """
+#     if dirpath.exists():
+#         shutil.rmtree(dirpath)
+#     dirpath.mkdir(parents=True, exist_ok=False)
+
+
+# def loading_config() -> dict:
+#     pyproject = Path("pyproject.toml")
+#     with pyproject.open("rb") as f:
+#         data = tomllib.load(f)
+#     return data["tool"]["pokecode"]
 
 
 # ============================================================
 # メイン関数: setup_logging
 # ============================================================
 def setup_logging(
-    *, level: str = "INFO", logdirname: str = "logs", logfilename: str = "app.log"
+    *,
+    level: str = "INFO",
+    logdir: Path | str = "logs",
+    logname: str = "app.log",
 ) -> None:
     """
     アプリケーション全体のロギング設定を初期化します。
@@ -241,11 +245,20 @@ def setup_logging(
     #     shutil.rmtree(dirpath)
     # filepath = convert_str_to_path_from_project_root(f"{logdirname}/{logfilename}")
 
-    fileh = RotatingFileHandler(
+    # config = loading_config()
+
+    logdir: Path = Path(logdir)
+    logdir.mkdir(exist_ok=True)
+    filepath = logdir / logname
+
+    print(logdir.resolve())
+
+    fileh = TimedRotatingFileHandler(
         filepath,
-        maxBytes=2_000_000,
-        backupCount=99,
-        encoding="utf-8",
+        when="midnight",
+        interval=1,
+        backupCount=0,
+        encoding=None,
     )
     fileh.setFormatter(formatter)
 
