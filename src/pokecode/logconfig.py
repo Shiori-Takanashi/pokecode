@@ -14,9 +14,10 @@ def setup_logging(
     logdir: Path = Path(logdir)
     filepath = logdir / logname
 
+    # 既に同じファイルパスのハンドラーが存在するかチェック
     for handler in root.handlers:
         if isinstance(handler, TimedRotatingFileHandler):
-            if Path(handler.baseFilename) == filepath:
+            if Path(handler.baseFilename).resolve() == filepath.resolve():
                 return
 
     resolved_level = getattr(logging, level.upper(), logging.INFO)
