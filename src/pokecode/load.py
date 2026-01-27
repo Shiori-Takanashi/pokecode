@@ -2,7 +2,8 @@ from pathlib import Path
 import tomllib
 
 
-def load_config(pyproject_path: Path | None = None) -> dict:
+def load_config(pyproject_path_str: str | None = None) -> dict:
+    pyproject_path = Path(pyproject_path_str)
     if pyproject_path is None:
         pyproject_path = Path("pyproject.toml")
 

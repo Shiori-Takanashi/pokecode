@@ -21,6 +21,8 @@ pokecode = "pokecode:main"
 [tool.pokecode]
 logdir = "logs"
 logfile = "app.log"
+debug_logdir = "debug_log"
+debug_logfile = "debug.log"
 
 [build-system]
 requires = ["uv_build>=0.9.2,<0.10.0"]
