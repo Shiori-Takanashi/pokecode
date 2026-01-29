@@ -7,15 +7,18 @@ from logging import Formatter, StreamHandler
 
 
 def setup_logging(level: str = "INFO") -> None:
-    app_logger = logging.getLogger("pokecode")
-    app_logger.propagate = False
-    resolved_level = getattr(logging, level.upper(), logging.INFO)
-    app_logger.setLevel(resolved_level)
+    logger = logging.getLogger("pokecode")
 
-    fmt = "%(asctime)s [%(levelname)-5s]: %(message)s"
+    resolved_level = getattr(logging, level.upper(), logging.INFO)
+    logger.setLevel(resolved_level)
+
+    fmt = "%(asctime)s [%(levelname)-5s] %(name)s %(module)s:%(funcName)s: %(message)s"
     datefmt = "%Y-%m-%d %H:%M:%S"
     formatter: Formatter = logging.Formatter(fmt=fmt, datefmt=datefmt)
 
-    sh = StreamHandler(sys.stdout)
-    sh.setFormatter(formatter)
-    app_logger.addHandler(sh)
+    if not any(isinstance(h, StreamHandler) for h in logger.handlers):
+        sh = StreamHandler(sys.stderr)
+        sh.setFormatter(formatter)
+        logger.addHandler(sh)
+
+    logger.propagate = False

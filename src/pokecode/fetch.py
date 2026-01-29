@@ -60,7 +60,7 @@ class FetchError(RuntimeError):
 # ============================================================
 # メイン関数: fetch_text
 # ============================================================
-def fetch_text(
+def fetch_text_from_url(
     url: str,
     *,
     timeout: float = 10.0,

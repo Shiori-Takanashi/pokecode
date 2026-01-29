@@ -3,7 +3,7 @@ from flask import Flask, Response, jsonify
 app = Flask(__name__)
 
 
-@app.route("/", methods=["GET"])
+@app.route("/api/hello", methods=["GET"])
 def index() -> Response:
     return jsonify({"MSG": "Hello."})
 
