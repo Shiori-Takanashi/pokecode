@@ -1,24 +1,28 @@
-# pokecode/logconfig.py
-
 import logging
 import sys
+from logging import Logger, StreamHandler
 
-from logging import Formatter, StreamHandler
 
-
-def setup_logging(level: str = "INFO") -> None:
-    logger = logging.getLogger("pokecode")
-
+def setup_logging(logger: Logger, *, level: str = "INFO") -> None:
     resolved_level = getattr(logging, level.upper(), logging.INFO)
     logger.setLevel(resolved_level)
 
-    fmt = "%(asctime)s [%(levelname)-5s] %(name)s %(module)s:%(funcName)s: %(message)s"
+    fmt = "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
     datefmt = "%Y-%m-%d %H:%M:%S"
-    formatter: Formatter = logging.Formatter(fmt=fmt, datefmt=datefmt)
+    formatter = logging.Formatter(fmt=fmt, datefmt=datefmt)
 
-    if not any(isinstance(h, StreamHandler) for h in logger.handlers):
-        sh = StreamHandler(sys.stderr)
-        sh.setFormatter(formatter)
-        logger.addHandler(sh)
+    target_stream = sys.stderr
+    stream_handler = None
+
+    for h in logger.handlers:
+        if isinstance(h, StreamHandler) and getattr(h, "stream", None) is target_stream:
+            stream_handler = h
+            break
+
+    if stream_handler is None:
+        stream_handler = StreamHandler(target_stream)
+        logger.addHandler(stream_handler)
+
+    stream_handler.setFormatter(formatter)
 
     logger.propagate = False

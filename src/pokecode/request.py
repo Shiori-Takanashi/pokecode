@@ -1,21 +1,30 @@
+import logging
 import requests
-
 from requests import Response
+
+logger = logging.getLogger(__name__)
 
 
 def requests_json(url: str) -> dict | list:
-    res: Response = requests.get(url)
+    logger.info("Request start: %s", url)
 
+    res: Response = requests.get(url)
     res.raise_for_status()
 
-    if "application/json" in res.headers.get("Content-Type", ""):
+    try:
         data = res.json()
-    else:
-        raise RuntimeError("Response is not JSON.")
+    except ValueError as e:
+        ct = res.headers.get("Content-Type")
+        logger.error("JSON parse failed. content-type=%s", ct)
+        raise RuntimeError(f"JSON parse failed. content-type={ct}") from e
+
+    logger.info("Request success: type=%s", type(data).__name__)
 
     if isinstance(data, dict):
+        logger.info("json is dict.")
         return data
-    elif isinstance(data, list):
+    if isinstance(data, list):
+        logger.info("json is list.")
         return data
-    else:
-        raise RuntimeError("JSON is invalid.")
+
+    raise RuntimeError("JSON is invalid.")
