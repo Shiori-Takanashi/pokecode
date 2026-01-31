@@ -1,27 +1,23 @@
 import logging
 import pytest
-from logging.handlers import TimedRotatingFileHandler
 
 
-@pytest.fixture(autouse=True)
-def reset_root_logger():
-    """テスト隔離用ロガーリセット（TimedRotatingFileHandler のみ削除）"""
+@pytest.fixture(autouse=False)
+def reset_logging():
     root = logging.getLogger()
 
-    timed_rotating_handlers = [
-        h for h in root.handlers if isinstance(h, TimedRotatingFileHandler)
-    ]
-
-    for h in timed_rotating_handlers:
+    # handler をすべて除去
+    for h in root.handlers[:]:
         root.removeHandler(h)
-        h.close()
+
+    # 状態を初期値へ
+    root.setLevel(logging.NOTSET)
+    root.propagate = True
 
     yield
 
-    timed_rotating_handlers = [
-        h for h in root.handlers if isinstance(h, TimedRotatingFileHandler)
-    ]
-
-    for h in timed_rotating_handlers:
+    # 後処理も同様に念のためリセット
+    for h in root.handlers[:]:
         root.removeHandler(h)
-        h.close()
+    root.setLevel(logging.NOTSET)
+    root.propagate = True

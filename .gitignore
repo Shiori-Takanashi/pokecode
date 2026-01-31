@@ -80,9 +80,6 @@ logs/
 *.log
 png/
 
-# uv
-.python-version
-uv.lock
 
 # Ruff cache
 .ruff_cache/
@@ -91,3 +88,14 @@ uv.lock
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+.pytest_cache/
+.ruff_cache/
+.venv/
+.vscode/
+
+debug_log/
+
+png/
+
+_legacy/

@@ -9,7 +9,7 @@ from pokecode.config import PYPROJECT
 
 def main() -> None:
     logger = logging.getLogger("pokecode")
-    setup_logging(logger, level="INFO")
+    setup_logging(logger=logger, level="INFO")
 
     logger.info("Application Start.")
 
