@@ -26,7 +26,9 @@ def load_config(pyproject_path: Path = PYPROJECT) -> dict:
 
 @app.route("/api/hello", methods=["GET"])
 def index() -> Response:
-    return jsonify({"MSG": "Hello."})
+    res: Response = jsonify({"MSG": "Hello."})
+    res.status_code = 500
+    return res
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@ import logging
 import pytest
 
 
-@pytest.fixture(autouse=False)
+@pytest.fixture(autouse=True)
 def reset_logging():
     root = logging.getLogger()
 

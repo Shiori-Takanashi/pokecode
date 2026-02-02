@@ -1,5 +1,6 @@
 import logging
 from logging import Logger, StreamHandler
+# from logging.handlers import TimedRotatingFileHandler
 
 
 def setup_logging(*, logger: Logger, level: str = "INFO"):
@@ -13,10 +14,7 @@ def setup_logging(*, logger: Logger, level: str = "INFO"):
 
     sh = None
     for h in logger.handlers:
-        if (
-            isinstance(h, StreamHandler)
-            and getattr(h, "name", None) == "pokecode-console"
-        ):
+        if isinstance(h, StreamHandler) and getattr(h, "name", None) == "console":
             sh = h
             break
 

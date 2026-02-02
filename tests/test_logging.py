@@ -21,8 +21,7 @@ def test_setup_logging_adds_console_handler(reset_logging):
     handlers = [
         h
         for h in logger.handlers
-        if isinstance(h, StreamHandler)
-        and getattr(h, "name", None) == "pokecode-console"
+        if isinstance(h, StreamHandler) and getattr(h, "name", None) == "console"
     ]
 
     assert len(handlers) == 1

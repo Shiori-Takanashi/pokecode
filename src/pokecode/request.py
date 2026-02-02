@@ -18,13 +18,11 @@ def request_json(url: str) -> dict | list:
         logger.error("JSON parse failed. content-type=%s", ct)
         raise RuntimeError(f"JSON parse failed. content-type={ct}") from e
 
-    logger.info("Request success: type=%s", type(data).__name__)
-
     if isinstance(data, dict):
-        logger.info("json is dict.")
+        logger.debug("json is dict.")
         return data
     if isinstance(data, list):
-        logger.info("json is list.")
+        logger.debug("json is list.")
         return data
 
     raise RuntimeError("JSON is invalid.")
