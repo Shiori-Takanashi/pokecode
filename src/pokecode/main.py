@@ -1,5 +1,6 @@
 # pokecode/main.py
 import logging
+import sys
 
 from pokecode.request import request_json
 from pokecode.logconfig import setup_logging
@@ -19,6 +20,10 @@ def main() -> None:
 
         msg = request_json(url)
         logger.info("Response payload: %s", msg)
+
+    except Exception:
+        logger.exception("Unhandled exception")
+        sys.exit(1)
 
     finally:
         logger.info("Application End.")
