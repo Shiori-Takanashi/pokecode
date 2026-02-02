@@ -5,7 +5,7 @@ from requests import Response
 logger = logging.getLogger(__name__)
 
 
-def requests_json(url: str) -> dict | list:
+def request_json(url: str) -> dict | list:
     logger.info("Request start: %s", url)
 
     res: Response = requests.get(url)

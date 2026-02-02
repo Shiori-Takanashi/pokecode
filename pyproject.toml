@@ -18,11 +18,17 @@ dependencies = [
 [project.scripts]
 pokecode = "pokecode:main"
 
+[tool.common]
+host = "127.0.0.1"
+port = "5000"
+
 [tool.pokecode]
 logdir = "logs"
 logfile = "app.log"
 debug_logdir = "debug_log"
 debug_logfile = "debug.log"
+
+
 local = "http://localhost:5000/api/hello"
 
 [build-system]

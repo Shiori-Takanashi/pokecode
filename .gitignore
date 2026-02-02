@@ -94,10 +94,10 @@ dmypy.json
 .venv/
 .vscode/
 
-debug_log/
+.debug_log/
 
-png/
+.png/
 
-_legacy/
+.legacy/
 
-docs/
+.docs/
