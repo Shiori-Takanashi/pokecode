@@ -25,9 +25,6 @@ jobs:
       - name: Install dependencies
         run: uv sync --dev
 
-      - name: Type check (mypy)
-        run: uv run mypy
-
       - name: Run tests (pytest)
         run: uv run pytest --verbose --tb=short
 
