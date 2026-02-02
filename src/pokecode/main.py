@@ -13,13 +13,15 @@ def main() -> None:
 
     logger.info("Application Start.")
 
-    data = load_config(PYPROJECT)
-    url = data["tool"]["pokecode"]["local"]
+    try:
+        data = load_config(PYPROJECT)
+        url = data["tool"]["pokecode"]["local"]
 
-    msg = request_json(url)
-    logger.info("Response payload: %s", msg)
+        msg = request_json(url)
+        logger.info("Response payload: %s", msg)
 
-    logger.info("Application End.")
+    finally:
+        logger.info("Application End.")
 
 
 if __name__ == "__main__":
