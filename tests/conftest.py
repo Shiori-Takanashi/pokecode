@@ -2,22 +2,24 @@ import logging
 import pytest
 
 
-@pytest.fixture(autouse=True)
-def reset_logging():
+def _reset_all_loggers():
+    """すべてのロガーとハンドラーをリセット"""
+    for logger_name in list(logging.Logger.manager.loggerDict.keys()):
+        logger = logging.getLogger(logger_name)
+        for h in logger.handlers[:]:
+            logger.removeHandler(h)
+        logger.setLevel(logging.NOTSET)
+        logger.propagate = True
+
     root = logging.getLogger()
-
-    # handler をすべて除去
     for h in root.handlers[:]:
         root.removeHandler(h)
-
-    # 状態を初期値へ
     root.setLevel(logging.NOTSET)
     root.propagate = True
 
+
+@pytest.fixture
+def reset_logging():
+    _reset_all_loggers()
     yield
-
-    # 後処理も同様に念のためリセット
-    for h in root.handlers[:]:
-        root.removeHandler(h)
-    root.setLevel(logging.NOTSET)
-    root.propagate = True
+    _reset_all_loggers()

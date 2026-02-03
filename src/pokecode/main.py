@@ -2,7 +2,7 @@
 import logging
 import sys
 
-from pokecode.request import request_json
+from pokecode.request_json import request_json
 from pokecode.logconfig import setup_logging
 from pokecode.loading import load_config
 from pokecode.config import PYPROJECT
