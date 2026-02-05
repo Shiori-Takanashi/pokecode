@@ -14,7 +14,7 @@ class Config:
     @classmethod
     def get_log_dir(cls) -> Path:
         return Path(_get_env("POKECODE_LOG_DIR", "logs"))
-    
+
     # ... 大量のメソッド定義
 ```
 
@@ -179,12 +179,12 @@ assert config.get_port() == 9000  # 即座に反映
 ## テスト結果
 
 ✅ `get_log_dir()` 正常動作
-✅ `get_host()` 正常動作  
-✅ `get_port()` 正常動作  
-✅ `get_local_html_url()` 正常動作  
-✅ `get_all()` 全設定を辞書で返却  
-✅ Pylance エラー = 0  
-✅ main.py 実行可能  
+✅ `get_host()` 正常動作
+✅ `get_port()` 正常動作
+✅ `get_local_html_url()` 正常動作
+✅ `get_all()` 全設定を辞書で返却
+✅ Pylance エラー = 0
+✅ main.py 実行可能
 ✅ 動的設定（環境変数変更に対応）
 
 ## 次のステップ
