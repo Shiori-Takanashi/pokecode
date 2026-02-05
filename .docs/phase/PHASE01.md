@@ -1,7 +1,7 @@
 # PHASE01：プロジェクト状況整理と要件確認
 
-**作成日**: 2026-02-05  
-**対象ブランチ**: `version02`  
+**作成日**: 2026-02-05
+**対象ブランチ**: `version02`
 **最新コミット**: `07a9383` - "requestのjsonを未理解。"
 
 ---
@@ -60,7 +60,7 @@ def main() -> None:
     logger = logging.getLogger("pokecode")
     setup_logging(logger=logger, level="INFO")
     logger.info("Application Start.")
-    
+
     try:
         data = load_config(PYPROJECT)
         url = data["tool"]["pokecode"]["localhost_html"]

@@ -5,7 +5,7 @@ import sys
 from pokecode.request_html import request_html
 from pokecode.logconfig import setup_logging
 from pokecode.loading import load_config
-from pokecode.config import PYPROJECT
+from pokecode.config import Config
 
 
 def main() -> None:
@@ -15,8 +15,8 @@ def main() -> None:
     logger.info("Application Start.")
 
     try:
-        data = load_config(PYPROJECT)
-        url = data["tool"]["pokecode"]["localhost_html"]
+        data = load_config(Config.PYPROJECT)
+        url = Config.LOCAL_HTML_URL
 
         html = request_html(url=url)
         logger.info("HTML retrieved: %d characters", len(html))

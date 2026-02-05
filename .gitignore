@@ -100,10 +100,13 @@ dmypy.json
 
 .legacy/
 
-
 # Distribution
 dist/
 
-# Debug and documentation (但し phase ドキュメントは追跡)
-.debug_log/
+# Environment variables（.env.example は除外）
+.env
+.env.local
+.env.*.local
 
+# Debug and documentation
+.debug_log/

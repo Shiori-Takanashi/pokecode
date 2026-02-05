@@ -4,14 +4,15 @@ from logging import Logger, StreamHandler
 from logging.handlers import TimedRotatingFileHandler
 from pathlib import Path
 
-from pokecode.config import PROJECT_ROOT
+from pokecode.config import Config
 
 _CONSOLE_NAME = "console"
 _FILE_NAME = "file"
 
 
 def _resolve_logfile(*, logdir_name: str, logname: str) -> Path:
-    logdir = PROJECT_ROOT / logdir_name
+    """ログファイルのパスを解決"""
+    logdir = Config.PROJECT_ROOT / logdir_name
     logdir.mkdir(parents=True, exist_ok=True)
     return logdir / logname
 
@@ -23,6 +24,15 @@ def setup_logging(
     logdir_name: str = "logs",
     logname: str = "app.log",
 ) -> None:
+    """
+    logger をセットアップ
+
+    Args:
+        logger: セットアップ対象の Logger
+        level: ログレベル（"DEBUG", "INFO" など）
+        logdir_name: ログディレクトリ名
+        logname: ログファイル名
+    """
     fmt = "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
     datefmt = "%Y-%m-%d %H:%M:%S"
     formatter = logging.Formatter(fmt=fmt, datefmt=datefmt)
@@ -31,6 +41,7 @@ def setup_logging(
     logger.setLevel(resolved_level)
     logger.propagate = False
 
+    # StreamHandler（重複チェック）
     sh = None
     for h in logger.handlers:
         if isinstance(h, StreamHandler) and getattr(h, "name", None) == _CONSOLE_NAME:
@@ -44,6 +55,7 @@ def setup_logging(
 
     sh.setFormatter(formatter)
 
+    # TimedRotatingFileHandler（重複チェック）
     filepath = _resolve_logfile(logdir_name=logdir_name, logname=logname)
 
     fh = None

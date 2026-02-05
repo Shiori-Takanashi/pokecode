@@ -127,15 +127,15 @@ from pokecode.main import main
 def test_main_with_html_success(capsys):
     """main() が正常に HTML を取得して実行終了"""
     mock_html = "<html><body>Pokemon</body></html>"
-    
+
     with patch('pokecode.main.load_config') as mock_config, \
          patch('pokecode.main.request_html') as mock_request:
-        
+
         mock_config.return_value = {
             "tool": {"pokecode": {"localhost_html": "http://localhost:5000"}}
         }
         mock_request.return_value = mock_html
-        
+
         # main() を実行（例外が出ないことを確認）
         try:
             main()
@@ -148,14 +148,14 @@ def test_main_with_request_failure():
     with patch('pokecode.main.load_config') as mock_config, \
          patch('pokecode.main.request_html') as mock_request, \
          patch('sys.exit') as mock_exit:
-        
+
         mock_config.return_value = {
             "tool": {"pokecode": {"localhost_html": "http://localhost:5000"}}
         }
         mock_request.side_effect = ConnectionError("Connection failed")
-        
+
         main()
-        
+
         # sys.exit(1) が呼ばれたことを確認
         mock_exit.assert_called_once_with(1)
 ```
@@ -172,7 +172,7 @@ from pokecode.logconfig import setup_logging
 def test_setup_logging_no_duplication():
     """複数回の setup_logging() で handler が増殖しないか"""
     logger = logging.getLogger("test_integration")
-    
+
     for i in range(3):
         setup_logging(logger=logger, level="INFO")
         stream_handlers = [
@@ -187,12 +187,12 @@ def test_setup_logging_formatter_applied():
     """setup_logging() で formatter が正しく設定されるか"""
     logger = logging.getLogger("test_formatter")
     setup_logging(logger=logger, level="INFO")
-    
+
     stream_handlers = [
         h for h in logger.handlers
         if isinstance(h, logging.StreamHandler)
     ]
-    
+
     assert len(stream_handlers) == 1
     handler = stream_handlers[0]
     assert handler.formatter is not None

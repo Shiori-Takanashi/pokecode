@@ -5,18 +5,19 @@ from pathlib import Path
 import tomllib
 from flask import Flask, jsonify, render_template
 
-from paths import PYPROJECT, STATIC_DIR
+from paths import PYPROJECT, STATIC_DIR, TEMPLATES_DIR
 from create_qr import create_qr
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=str(TEMPLATES_DIR))
 
 logger = logging.getLogger(__name__)
 
 
 def load_config(pyproject_path: Path = PYPROJECT) -> dict:
+    """pyproject.toml から設定を読み込む"""
     if not pyproject_path.exists():
         logger.error("Config file not found: %s", pyproject_path)
-        raise FileNotFoundError("'pyproject.toml'が発見不可。")
+        raise FileNotFoundError(f"pyproject.toml not found: {pyproject_path}")
 
     with pyproject_path.open("rb") as f:
         data = tomllib.load(f)
@@ -26,7 +27,8 @@ def load_config(pyproject_path: Path = PYPROJECT) -> dict:
 
 
 @app.route("/json", methods=["GET"])
-def hello():
+def get_json():
+    """JSON データを返すエンドポイント"""
     sample_path = STATIC_DIR / "sample.json"
     if not sample_path.exists():
         return jsonify({"error": "File not found"}), 404
@@ -38,6 +40,7 @@ def hello():
 
 @app.route("/", methods=["GET"])
 def index():
+    """HTML ページを返すエンドポイント"""
     return render_template("sample.html")
 
 

@@ -126,21 +126,21 @@ class EmptyResponseError(ContractViolationError):
 
 def request_html(url: str, *, timeout: float = 10.0) -> HtmlResult:
     logger.info("Request start: %s", url)
-    
+
     try:
         res = requests.get(
             url,
             timeout=timeout,
             headers={"Accept": "text/html"},
         )
-        
+
         _raise_for_status_with_log(res, url=url)
         _ensure_html_content_type(res, url=url)
         html = _extract_html_with_log(res, url=url)
-        
+
         logger.debug("Request success: url=%s len=%d", url, len(html))
         return html
-        
+
     except requests.RequestException:
         logger.error("Request failed: url=%s", url)
         raise
@@ -181,7 +181,7 @@ def _ensure_html_content_type(res: Response, *, url: str) -> None:
 def _extract_html_with_log(res: Response, *, url: str) -> HtmlResult:
     """HTML テキストを抽出"""
     html = res.text
-    
+
     if not html:
         ctx = _build_context(res, url=url, include_snippet=False)
         logger.error(
@@ -191,7 +191,7 @@ def _extract_html_with_log(res: Response, *, url: str) -> HtmlResult:
             ctx.content_type,
         )
         raise EmptyResponseError("Response body is empty")
-    
+
     return html
 
 
@@ -210,11 +210,11 @@ def _build_context(
     status_code = getattr(res, "status_code", None)
     reason = getattr(res, "reason", None)
     content_type = res.headers.get("Content-Type")
-    
+
     snippet = None
     if include_snippet:
         snippet = _response_snippet(res, limit_chars=400)
-    
+
     return ResponseContext(
         url=url,
         status_code=status_code,
@@ -230,7 +230,7 @@ def _response_snippet(res: Response, *, limit_chars: int) -> str:
         text = res.text
     except Exception:
         return "<unavailable>"
-    
+
     compact = " ".join(text.replace("\t", " ").splitlines())
     if len(compact) > limit_chars:
         return compact[:limit_chars] + "…"
@@ -293,7 +293,7 @@ def main() -> None:
     logger = logging.getLogger("pokecode")
     setup_logging(logger=logger, level="INFO")
     logger.info("Application Start.")
-    
+
     try:
         data = load_config(PYPROJECT)
         url = data["tool"]["pokecode"]["localhost_html"]

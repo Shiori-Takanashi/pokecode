@@ -30,7 +30,7 @@ def main() -> None:
     logger = logging.getLogger("pokecode")
     setup_logging(logger=logger, level="INFO")
     logger.info("Application Start.")
-    
+
     try:
         data = load_config(PYPROJECT)
         url = data["tool"]["pokecode"]["localhost_html"]
@@ -123,17 +123,17 @@ def main() -> None:
     logger = logging.getLogger("pokecode")
     setup_logging(logger=logger, level="INFO")
     logger.info("Application Start.")
-    
+
     try:
         data = load_config(PYPROJECT)
         url = data["tool"]["pokecode"]["localhost_html"]
         html = request_html(url=url)
-        
+
         # HTML をパース
         soup = BeautifulSoup(html, "html.parser")
         # ... ポケモン情報を抽出 ...
         logger.info("Scraping completed")
-        
+
     except Exception:
         logger.exception("Unhandled exception")
         sys.exit(1)
@@ -150,16 +150,16 @@ def main() -> None:
     logger = logging.getLogger("pokecode")
     setup_logging(logger=logger, level="INFO")
     logger.info("Application Start.")
-    
+
     try:
         data = load_config(PYPROJECT)
         url = data["tool"]["pokecode"]["localhost_json"]
         json_data = request_json(url)
-        
+
         # JSON データを処理
         logger.info("Response type: %s", type(json_data).__name__)
         logger.info("Response: %s", json_data)
-        
+
     except Exception:
         logger.exception("Unhandled exception")
         sys.exit(1)
@@ -179,16 +179,16 @@ def main() -> None:
     logger = logging.getLogger("pokecode")
     setup_logging(logger=logger, level="INFO")
     logger.info("Application Start.")
-    
+
     try:
         data = load_config(PYPROJECT)
         url = data["tool"]["pokecode"]["localhost"]  # generic URL
-        
+
         # server の応答を確認
         import requests
         res = requests.head(url)
         ct = res.headers.get("Content-Type", "").lower()
-        
+
         if "json" in ct:
             json_data = request_json(url)
             logger.info("Received JSON: %s", json_data)
@@ -197,7 +197,7 @@ def main() -> None:
             logger.info("Received HTML of length: %d", len(html))
         else:
             raise ValueError(f"Unexpected content-type: {ct}")
-        
+
     except Exception:
         logger.exception("Unhandled exception")
         sys.exit(1)

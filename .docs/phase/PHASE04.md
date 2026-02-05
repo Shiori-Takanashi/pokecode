@@ -39,19 +39,19 @@ def setup_logging(
 ) -> None:
     logger.propagate = False
     logger.setLevel(resolved_level)
-    
+
     # StreamHandler の重複チェック
     sh = None
     for h in logger.handlers:
         if isinstance(h, StreamHandler) and getattr(h, "name", None) == _CONSOLE_NAME:
             sh = h  # 既存のハンドラを再利用
             break
-    
+
     if sh is None:  # 存在しなければ新規作成
         sh = StreamHandler()
         sh.name = _CONSOLE_NAME
         logger.addHandler(sh)
-    
+
     sh.setFormatter(formatter)  # フォーマッタを設定
 ```
 
@@ -79,27 +79,27 @@ from pokecode.logconfig import setup_logging
 
 def test_stream_handler_not_duplicated_on_second_call():
     """2回目の setup_logging() で StreamHandler が増殖しないか確認"""
-    
+
     # 1回目の setup_logging()
     logger1 = logging.getLogger("test_logger_1")
     setup_logging(logger=logger1)
     handlers_count_1 = len([h for h in logger1.handlers if isinstance(h, logging.StreamHandler)])
     assert handlers_count_1 == 1, f"Expected 1 StreamHandler, got {handlers_count_1}"
-    
+
     # 2回目の setup_logging()（同じ logger）
     setup_logging(logger=logger1)
     handlers_count_2 = len([h for h in logger1.handlers if isinstance(h, logging.StreamHandler)])
     assert handlers_count_2 == 1, f"Expected 1 StreamHandler, got {handlers_count_2}"
-    
+
     # ハンドラの内容が同じか確認
     print(f"1回目: {handlers_count_1}, 2回目: {handlers_count_2}")
 
 
 def test_stream_handler_multiple_calls():
     """N回の setup_logging() でも StreamHandler が 1個に保たれるか"""
-    
+
     logger = logging.getLogger("test_logger_multi")
-    
+
     for i in range(5):
         setup_logging(logger=logger)
         handlers_count = len([h for h in logger.handlers if isinstance(h, logging.StreamHandler)])
@@ -136,7 +136,7 @@ def inspect_logger(logger: logging.Logger) -> None:
     print(f"Level: {logging.getLevelName(logger.level)}")
     print(f"Propagate: {logger.propagate}")
     print(f"Handlers: {len(logger.handlers)}")
-    
+
     for i, handler in enumerate(logger.handlers):
         print(f"\n  Handler {i}:")
         print(f"    Type: {type(handler).__name__}")
