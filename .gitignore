@@ -100,4 +100,10 @@ dmypy.json
 
 .legacy/
 
-.docs/
+
+# Distribution
+dist/
+
+# Debug and documentation (但し phase ドキュメントは追跡)
+.debug_log/
+

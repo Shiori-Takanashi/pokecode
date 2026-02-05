@@ -2,7 +2,7 @@
 import logging
 import sys
 
-from pokecode.request_json import request_json
+from pokecode.request_html import request_html
 from pokecode.logconfig import setup_logging
 from pokecode.loading import load_config
 from pokecode.config import PYPROJECT
@@ -16,10 +16,10 @@ def main() -> None:
 
     try:
         data = load_config(PYPROJECT)
-        url = data["tool"]["pokecode"]["local"]
+        url = data["tool"]["pokecode"]["localhost_html"]
 
-        msg = request_json(url)
-        logger.info("Response payload: %s", msg)
+        html = request_html(url=url)
+        logger.info("HTML retrieved: %d characters", len(html))
 
     except Exception:
         logger.exception("Unhandled exception")
