@@ -46,13 +46,13 @@ def get_app_config() -> dict:
 
     # Config クラスから値を取得（環境変数を反映済み）
     return {
-        "log_dir": str(Config.LOG_DIR),
-        "log_file": Config.LOG_FILE,
-        "debug_log_dir": str(Config.DEBUG_LOG_DIR),
-        "debug_log_file": Config.DEBUG_LOG_FILE,
-        "host": Config.HOST,
-        "port": Config.PORT,
-        "local_html_url": Config.LOCAL_HTML_URL,
-        "local_json_url": Config.LOCAL_JSON_URL,
+        "log_dir": str(Config.log_dir()),
+        "log_file": Config.log_file(),
+        "debug_log_dir": str(Config.debug_log_dir()),
+        "debug_log_file": Config.debug_log_file(),
+        "host": Config.host(),
+        "port": Config.port(),
+        "local_html_url": Config.local_html_url(),
+        "local_json_url": Config.local_json_url(),
         **pyproject.get("tool", {}).get("pokecode", {}),
     }

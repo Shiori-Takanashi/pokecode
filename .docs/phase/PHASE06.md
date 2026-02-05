@@ -87,22 +87,22 @@ class Config:
     # プロジェクトルート
     PROJECT_ROOT: Path = ...
     PYPROJECT: Path = ...
-    
+
     # ログ設定（環境変数対応）
     LOG_DIR: Path = ...
     LOG_FILE: str = ...
     DEBUG_LOG_DIR: Path = ...
     DEBUG_LOG_FILE: str = ...
-    
+
     # サーバー設定（環境変数対応）
     HOST: str = ...
     PORT: int = ...
-    
+
     # API URL（環境ごとに異なる）
     LOCAL_HTML_URL: str = ...
     LOCAL_JSON_URL: str = ...
     REMOTE_API_URL: Optional[str] = ...
-    
+
     @classmethod
     def load(cls) -> 'Config':
         # .env ファイル読み込み
@@ -257,27 +257,27 @@ def _get_env(key: str, default: Optional[str] = None) -> Optional[str]:
     if DOT_ENV.exists():
         from dotenv import load_dotenv
         load_dotenv(DOT_ENV)
-    
+
     return os.getenv(key, default)
 
 
 class Config:
     """プロジェクト設定の一元化"""
-    
+
     # プロジェクトパス
     PROJECT_ROOT: Path = PROJECT_ROOT
     PYPROJECT: Path = PYPROJECT
-    
+
     # ログ設定（環境変数 → デフォルト値）
     LOG_DIR: Path = Path(_get_env("POKECODE_LOG_DIR", "logs"))
     LOG_FILE: str = _get_env("POKECODE_LOG_FILE", "app.log")
     DEBUG_LOG_DIR: Path = Path(_get_env("POKECODE_DEBUG_LOG_DIR", "debug_log"))
     DEBUG_LOG_FILE: str = _get_env("POKECODE_DEBUG_LOG_FILE", "debug.log")
-    
+
     # サーバー設定
     HOST: str = _get_env("POKECODE_HOST", "127.0.0.1")
     PORT: int = int(_get_env("POKECODE_PORT", "5000"))
-    
+
     # API URL（環境ごとに異なる）
     LOCAL_HTML_URL: str = _get_env(
         "POKECODE_LOCAL_HTML_URL",
@@ -287,7 +287,7 @@ class Config:
         "POKECODE_LOCAL_JSON_URL",
         "http://localhost:5000/json"
     )
-    
+
     @classmethod
     def to_dict(cls) -> dict:
         """設定をdict に変換（デバッグ用）"""
@@ -303,7 +303,7 @@ class Config:
             "LOCAL_HTML_URL": cls.LOCAL_HTML_URL,
             "LOCAL_JSON_URL": cls.LOCAL_JSON_URL,
         }
-    
+
     @classmethod
     def log_current(cls) -> None:
         """現在の設定をログ出力（デバッグ用）"""
@@ -349,7 +349,7 @@ def get_app_config() -> dict:
     アプリケーション設定を取得（pyproject.toml + 環境変数）
     """
     pyproject = load_config()
-    
+
     # pyproject.toml の設定をマージ（必要に応じて）
     # 環境変数が優先される
     return {
