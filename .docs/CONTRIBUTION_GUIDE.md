@@ -87,7 +87,7 @@ def my_function(arg: str) -> int:
         ValueError: エラーケースの説明
     """
     logger.info("処理開始: %s", arg)
-    
+
     try:
         # 実装
         result = int(arg)

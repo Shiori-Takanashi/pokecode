@@ -6,6 +6,7 @@ from pokecode.request_html import request_html
 from pokecode.logconfig import setup_logging
 from pokecode.loading import load_config
 from pokecode import config
+from pokecode.paths import PYPROJECT
 
 
 def main() -> None:
@@ -15,7 +16,7 @@ def main() -> None:
     logger.info("Application Start.")
 
     try:
-        load_config(config.PYPROJECT)
+        load_config(PYPROJECT)
         url = config.get_local_html_url()
 
         html = request_html(url=url)

@@ -8,21 +8,15 @@ import logging
 import os
 from pathlib import Path
 
-from pokecode.getpath import get_project_root_to_parent
+from pokecode.paths import DOT_ENV, DOT_ENV_LOCAL, PROJECT_ROOT, PYPROJECT
 
 logger = logging.getLogger(__name__)
-
-# プロジェクトパス（定数）
-PROJECT_ROOT = get_project_root_to_parent(Path(__file__).parent)
-PYPROJECT = PROJECT_ROOT / "pyproject.toml"
-DOT_ENV_LOCAL = PROJECT_ROOT / ".env.local"
-DOT_ENV = PROJECT_ROOT / ".env"
 
 
 def _load_env() -> None:
     """
     .env ファイルを読み込む (python-dotenv を使用)
-    
+
     .env.local が優先され、他の .env ファイルは上書きされない
     """
     env_file = None
@@ -47,11 +41,11 @@ def _load_env() -> None:
 def _get_env(key: str, default: str) -> str:
     """
     環境変数を取得
-    
+
     Args:
         key: 環境変数名
         default: デフォルト値
-        
+
     Returns:
         環境変数の値、またはデフォルト値
     """
@@ -100,9 +94,7 @@ def get_local_html_url() -> str:
 
 def get_local_json_url() -> str:
     """ローカル JSON API URL を取得"""
-    return _get_env(
-        "POKECODE_LOCAL_JSON_URL", "http://localhost:5000/json"
-    )
+    return _get_env("POKECODE_LOCAL_JSON_URL", "http://localhost:5000/json")
 
 
 def get_all() -> dict:

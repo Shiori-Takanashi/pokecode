@@ -3,11 +3,12 @@ import tomllib
 from pathlib import Path
 
 from pokecode import config
+from pokecode.paths import PYPROJECT
 
 logger = logging.getLogger(__name__)
 
 
-def load_config(pyproject_path: Path = config.PYPROJECT) -> dict:
+def load_config(pyproject_path: Path = PYPROJECT) -> dict:
     """
     pyproject.toml から設定を読み込む
 
