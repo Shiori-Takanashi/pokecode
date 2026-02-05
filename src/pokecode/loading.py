@@ -2,12 +2,12 @@ import logging
 import tomllib
 from pathlib import Path
 
-from pokecode.config import Config
+from pokecode import config
 
 logger = logging.getLogger(__name__)
 
 
-def load_config(pyproject_path: Path = Config.PYPROJECT) -> dict:
+def load_config(pyproject_path: Path = config.PYPROJECT) -> dict:
     """
     pyproject.toml から設定を読み込む
 
@@ -44,15 +44,15 @@ def get_app_config() -> dict:
     """
     pyproject = load_config()
 
-    # Config クラスから値を取得（環境変数を反映済み）
+    # 設定値を取得（環境変数を反映済み）
     return {
-        "log_dir": str(Config.log_dir()),
-        "log_file": Config.log_file(),
-        "debug_log_dir": str(Config.debug_log_dir()),
-        "debug_log_file": Config.debug_log_file(),
-        "host": Config.host(),
-        "port": Config.port(),
-        "local_html_url": Config.local_html_url(),
-        "local_json_url": Config.local_json_url(),
+        "log_dir": str(config.get_log_dir()),
+        "log_file": config.get_log_file(),
+        "debug_log_dir": str(config.get_debug_log_dir()),
+        "debug_log_file": config.get_debug_log_file(),
+        "host": config.get_host(),
+        "port": config.get_port(),
+        "local_html_url": config.get_local_html_url(),
+        "local_json_url": config.get_local_json_url(),
         **pyproject.get("tool", {}).get("pokecode", {}),
     }

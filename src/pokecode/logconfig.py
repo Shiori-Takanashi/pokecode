@@ -4,7 +4,7 @@ from logging import Logger, StreamHandler
 from logging.handlers import TimedRotatingFileHandler
 from pathlib import Path
 
-from pokecode.config import Config
+from pokecode import config
 
 _CONSOLE_NAME = "console"
 _FILE_NAME = "file"
@@ -12,7 +12,7 @@ _FILE_NAME = "file"
 
 def _resolve_logfile(*, logdir_name: str, logname: str) -> Path:
     """ログファイルのパスを解決"""
-    logdir = Config.PROJECT_ROOT / logdir_name
+    logdir = config.PROJECT_ROOT / logdir_name
     logdir.mkdir(parents=True, exist_ok=True)
     return logdir / logname
 
