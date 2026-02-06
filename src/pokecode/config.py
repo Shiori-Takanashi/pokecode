@@ -97,6 +97,11 @@ def get_local_json_url() -> str:
     return _get_env("POKECODE_LOCAL_JSON_URL", "http://localhost:5000/json")
 
 
+def get_url() -> str:
+    """Pokemon Go Friendcodesサイトのトップurlを取得"""
+    return _get_env("URL", "ERROR")
+
+
 def get_all() -> dict:
     """すべての設定を辞書で取得 (デバッグ用)"""
     return {

@@ -2,6 +2,13 @@
 import logging
 import sys
 
+from pokecode.scraping import (
+    make_soup,
+    scrape_tag_of_html,
+    scrape_cards_from_html,
+    scrape_correct_card,
+    scrape_trainers,
+)
 from pokecode.request_html import request_html
 from pokecode.logconfig import setup_logging
 from pokecode.loading import load_config
@@ -17,10 +24,16 @@ def main() -> None:
 
     try:
         load_config(PYPROJECT)
-        url = config.get_local_html_url()
+        url = config.get_url()
 
         html = request_html(url=url)
         logger.info("HTML retrieved: %d characters", len(html))
+        soup = make_soup(html)
+        html = scrape_tag_of_html(soup)
+        cards = scrape_cards_from_html(html)
+        card = scrape_correct_card(cards)
+        trainers = scrape_trainers(card)
+        logger.info(len(trainers))
 
     except Exception:
         logger.exception("Unhandled exception")
