@@ -1,4 +1,5 @@
 # pokecode/logconfig.py
+from datetime import datetime
 import logging
 from logging import Logger, StreamHandler, FileHandler
 from pathlib import Path
@@ -21,7 +22,7 @@ def setup_logging(
     logger: Logger,
     level: str = "INFO",
     logdir_name: str = "logs",
-    logname: str = "app.log",
+    logname_prefix: str = "app",
 ) -> None:
     """
     logger をセットアップ
@@ -55,6 +56,7 @@ def setup_logging(
     sh.setFormatter(formatter)
 
     # FileHandler（重複チェック）
+    logname = f"{logname_prefix}.log.{datetime.now():%Y-%m-%d}"
     filepath = _resolve_logfile(logdir_name=logdir_name, logname=logname)
 
     fh = None
