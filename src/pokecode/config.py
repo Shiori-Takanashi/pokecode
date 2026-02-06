@@ -102,9 +102,9 @@ def get_url() -> str:
     return _get_env("URL", "https://example.co.japan")
 
 
-def get_output_file() -> Path:
+def get_output_file(*, suffix: str) -> Path:
     """出力ファイルパスを取得"""
-    default_output = str(PROJECT_ROOT / "output" / "codes.json")
+    default_output = str(PROJECT_ROOT / "output" / f"result{suffix}.json")
     return Path(_get_env("OUTPUT_FILE", default_output))
 
 
