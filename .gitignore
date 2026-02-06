@@ -112,3 +112,7 @@ dist/
 .debug_log/
 .docs/
 lesson/
+
+# Output files
+output/*.json
+.cache/
