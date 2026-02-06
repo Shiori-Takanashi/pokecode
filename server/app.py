@@ -5,8 +5,8 @@ from pathlib import Path
 import tomllib
 from flask import Flask, jsonify, render_template
 
-from paths import PYPROJECT, STATIC_DIR, TEMPLATES_DIR
-from create_qr import create_qr
+from server.paths import PYPROJECT, STATIC_DIR, TEMPLATES_DIR
+from server.utils.create_qr import create_qr
 
 app = Flask(__name__, template_folder=str(TEMPLATES_DIR))
 
