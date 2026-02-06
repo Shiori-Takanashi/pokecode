@@ -98,8 +98,8 @@ def get_local_json_url() -> str:
 
 
 def get_url() -> str:
-    """Pokemon Go Friendcodesサイトのトップurlを取得"""
-    return _get_env("URL", "ERROR")
+    """本番でのurlを取得"""
+    return _get_env("URL", "https://example.co.japan")
 
 
 def get_output_file() -> Path:

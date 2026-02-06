@@ -26,7 +26,7 @@ def main() -> None:
 
     try:
         load_config(PYPROJECT)
-        url = config.get_url()
+        url = config.get_local_html_url()
 
         html = request_html(url=url)
         logger.info("HTML retrieved: %d characters", len(html))
