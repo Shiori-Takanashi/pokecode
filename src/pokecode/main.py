@@ -9,8 +9,10 @@ from pokecode.scraping import (
     scrape_correct_card,
     # scrape_trainers,
     # scrape_code,
+    scrape_selection,
     scrape_options,
     scrape_country,
+    get_country_without_extra_chars,
 )
 from pokecode.request_html import request_html
 from pokecode.logconfig import setup_logging
@@ -35,18 +37,23 @@ def main() -> None:
         soup = make_soup(html)
         html = scrape_tag_of_html(soup)
         cards = scrape_cards_from_html(html)
-
         card_of_filter = scrape_correct_card(cards, "🔍 Filter Friend Codes")
-        options = scrape_options(card_of_filter)
+        selection = scrape_selection(card_of_filter)
+        options = scrape_options(selection)
         countires = [scrape_country(option) for option in options]
+        countires_without_extra_chars = [
+            result
+            for country in countires
+            if (result := get_country_without_extra_chars(country)) is not None
+        ]
 
         # card_of_qr = scrape_correct_card(cards, "📱 Friend Codes")
         # trainers = scrape_trainers(card_of_qr)
         # codes = [scrape_code(trainer) for trainer in trainers]
 
         # コードを保存
-        output_file = config.get_output_file()
-        save_json(countires, output_file)
+        output_file = config.get_output_file(suffix="02")
+        save_json(countires_without_extra_chars, output_file)
         logger.info("Codes saved to: %s", output_file)
 
     except Exception:
