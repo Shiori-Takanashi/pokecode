@@ -1,7 +1,6 @@
 # pokecode/logconfig.py
 import logging
-from logging import Logger, StreamHandler
-from logging.handlers import TimedRotatingFileHandler
+from logging import Logger, StreamHandler, FileHandler
 from pathlib import Path
 
 from pokecode.paths import PROJECT_ROOT
@@ -55,25 +54,18 @@ def setup_logging(
 
     sh.setFormatter(formatter)
 
-    # TimedRotatingFileHandler（重複チェック）
+    # FileHandler（重複チェック）
     filepath = _resolve_logfile(logdir_name=logdir_name, logname=logname)
 
     fh = None
     for h in logger.handlers:
-        if (
-            isinstance(h, TimedRotatingFileHandler)
-            and getattr(h, "name", None) == _FILE_NAME
-        ):
+        if isinstance(h, FileHandler) and getattr(h, "name", None) == _FILE_NAME:
             fh = h
             break
 
     if fh is None:
-        fh = TimedRotatingFileHandler(
-            filename=filepath,
-            when="D",
-            interval=1,
-            backupCount=7,
-            encoding="utf-8",
+        fh = FileHandler(
+            filename=filepath, mode="a", encoding="utf-8", delay=False, errors="strict"
         )
         fh.name = _FILE_NAME
         logger.addHandler(fh)
