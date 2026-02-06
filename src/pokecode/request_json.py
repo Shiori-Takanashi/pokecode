@@ -34,14 +34,17 @@ class InvalidJSONTypeError(ContractViolationError):
     """JSON ではあるが dict/list ではない"""
 
 
-def request_json(url: str, *, timeout: float = 10.0) -> JsonResult:
+def request_json(url: str, *, timeout: float = 30.0) -> JsonResult:
     logger.info("Request start: %s", url)
 
     try:
         res = requests.get(
             url,
-            timeout=timeout,
-            headers={"Accept": "application/json"},
+            timeout=(5.0, timeout),
+            headers={
+                "Accept": "application/json",
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            },
         )
 
         _raise_for_status_with_log(res, url=url)

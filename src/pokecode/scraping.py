@@ -50,9 +50,9 @@ def scrape_cards_from_html(html: Tag) -> list[Tag]:
     return cards
 
 
-def scrape_correct_card(cards: list[Tag]) -> Tag:
+def scrape_correct_card(cards: list[Tag], expected: str) -> Tag:
     for card in cards:
-        if is_target_card(card, title_expected="📱 Friend Codes"):
+        if is_target_card(card, title_expected=expected):
             return card
     raise ValueError("適切な card が見つかりません。")
 
@@ -78,13 +78,32 @@ def scrape_trainers(card: Tag) -> list[Tag]:
 
 def scrape_code(trainer: Tag) -> str:
     button = trainer.select_one("button")
-
     if button is None:
         raise ValueError()
-
     try:
         code = button["data-friend-code"]
     except Exception:
         raise RuntimeError()
-
     return str(code).strip()
+
+
+def scrape_selection(card: Tag) -> Tag:
+    selection = card.select_one("select.form-select#fileter_country")
+    if selection is None:
+        raise ValueError("selectionが見つかりません。")
+    return selection
+
+
+def scrape_options(selection: Tag) -> list[Tag]:
+    options = selection.select("option")
+    if options is None:
+        raise ValueError("optionsが見つかりません。")
+    return options
+
+
+def scrape_country(option: Tag) -> dict[str, str]:
+    code = option.get("value", None)
+    if code is None:
+        raise ValueError("codeが見つかりません。")
+    name = option.text.strip()
+    return {"iso_alpha3": str(code), "country_name": name}
