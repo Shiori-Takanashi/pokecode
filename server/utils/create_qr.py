@@ -1,6 +1,6 @@
 import qrcode
 
-from server.paths import STATIC_DIR
+from server.utils.paths import STATIC_DIR
 
 
 def create_qr(country: str) -> None:
