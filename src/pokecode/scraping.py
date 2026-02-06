@@ -1,5 +1,6 @@
 import logging
 from bs4 import BeautifulSoup, Tag
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -88,7 +89,7 @@ def scrape_code(trainer: Tag) -> str:
 
 
 def scrape_selection(card: Tag) -> Tag:
-    selection = card.select_one("select.form-select#fileter_country")
+    selection = card.select_one("select#filter_country")
     if selection is None:
         raise ValueError("selectionが見つかりません。")
     return selection
@@ -106,4 +107,28 @@ def scrape_country(option: Tag) -> dict[str, str]:
     if code is None:
         raise ValueError("codeが見つかりません。")
     name = option.text.strip()
-    return {"iso_alpha3": str(code), "country_name": name}
+    code = str(code)
+    return {"iso_alpha3": code, "country_name": name}
+
+
+def get_country_without_extra_chars(country: dict[str, str]) -> dict[str, str] | None:
+    # iso_alpha3が3文字でない場合は除外
+    iso_code = country.get("iso_alpha3", "")
+    if len(iso_code) != 3:
+        return None
+
+    values = list(country.values())
+    results = [without_extra_chars(text) for text in values]
+    if all(results):
+        return country
+    else:
+        return None
+
+
+def without_extra_chars(text: str) -> bool:
+    pattern = r"[^a-zA-Z,() '\-À-ÿ]"  # アクセント付きラテン文字を追加
+
+    if re.search(pattern, text):
+        return False
+    else:
+        return True
