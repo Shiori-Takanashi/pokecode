@@ -1,25 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Sample Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='sample.css') }}">
 </head>
 <body>
 
-<h1>Country QR Codes</h1>
+<div class="container">
+    <div class="card-body">
 
-<section id="countries">
-    <div class="country" data-iso="JP">
-        <span class="name">Japan</span>
-        <img src="{{ url_for('static', filename='imgs/japan.png' )}}">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">📱 Friend Codes</h2>
+
+                <div class="row">
+                    <div class="col">
+                        <img
+                            src="{{ url_for('static', filename='imgs/japan.png') }}"
+                            alt="Japan QR"
+                        >
+                        <button data-friend-code="1234-5678-9012">
+                            Japan Trainer
+                        </button>
+                    </div>
+
+                    <div class="col">
+                        <img
+                            src="{{ url_for('static', filename='imgs/united_states_of_america.png') }}"
+                            alt="USA QR"
+                        >
+                        <button data-friend-code="9876-5432-1098">
+                            USA Trainer
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
-    <div class="country" data-iso="US">
-        <span class="name">America</span>
-        <img src="{{ url_for('static', filename='imgs/united_states_of_america.png' )}}">
-    </div>
-</section>
+</div>
 
 </body>
 </html>
