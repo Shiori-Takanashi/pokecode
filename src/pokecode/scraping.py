@@ -74,3 +74,17 @@ def scrape_trainers(card: Tag) -> list[Tag]:
     if not trainers:
         raise ValueError("trainersが見つかりません。")
     return trainers
+
+
+def scrape_code(trainer: Tag) -> str:
+    button = trainer.select_one("button")
+
+    if button is None:
+        raise ValueError()
+
+    try:
+        code = button["data-friend-code"]
+    except Exception:
+        raise RuntimeError()
+
+    return str(code).strip()

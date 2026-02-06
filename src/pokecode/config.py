@@ -102,6 +102,12 @@ def get_url() -> str:
     return _get_env("URL", "ERROR")
 
 
+def get_output_file() -> Path:
+    """出力ファイルパスを取得"""
+    default_output = str(PROJECT_ROOT / "output" / "codes.json")
+    return Path(_get_env("OUTPUT_FILE", default_output))
+
+
 def get_all() -> dict:
     """すべての設定を辞書で取得 (デバッグ用)"""
     return {

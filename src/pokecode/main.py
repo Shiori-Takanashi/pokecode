@@ -8,12 +8,14 @@ from pokecode.scraping import (
     scrape_cards_from_html,
     scrape_correct_card,
     scrape_trainers,
+    scrape_code,
 )
 from pokecode.request_html import request_html
 from pokecode.logconfig import setup_logging
 from pokecode.loading import load_config
 from pokecode import config
 from pokecode.paths import PYPROJECT
+from pokecode.io_writing import save_json
 
 
 def main() -> None:
@@ -33,7 +35,12 @@ def main() -> None:
         cards = scrape_cards_from_html(html)
         card = scrape_correct_card(cards)
         trainers = scrape_trainers(card)
-        logger.info(len(trainers))
+        codes = [scrape_code(trainer) for trainer in trainers]
+
+        # コードを保存
+        output_file = config.get_output_file()
+        save_json(codes, output_file)
+        logger.info("Codes saved to: %s", output_file)
 
     except Exception:
         logger.exception("Unhandled exception")
