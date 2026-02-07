@@ -55,7 +55,11 @@ class TranslationService:
         return country_name
 
     def translate_countries_batch(
-        self, countries: list[dict[str, str]], batch_size: int = 10
+        self,
+        *,
+        countries: list[dict[str, str]],
+        ignore_cache: bool = False,
+        batch_size: int = 10,
     ) -> list[dict[str, str]]:
         """複数の国を一括翻訳する
 
@@ -68,6 +72,9 @@ class TranslationService:
         """
         result = []
         country_names = [c["country_name"] for c in countries]
+
+        if ignore_cache:
+            self.cache.delete()
 
         # キャッシュにない国を特定
         to_translate = [name for name in country_names if name not in self.cache]
@@ -133,8 +140,12 @@ class TranslationService:
 
             country_list = "\n".join(country_names)
             prompt = (
-                "あなたは地理と地名を専門とするプロの翻訳者です。\n"
+                "あなたは地理と地名について正確な知識を持つ翻訳者です。\n"
                 "以下の英語の国名を日本語に翻訳してください。\n"
+                "直訳ではなく、日本語の正式名称で翻訳してください。\n"
+                "例えば「サモア」は「サモア独立国」と翻訳してください。\n"
+                "例えば「American Samoa」は「アメリカ領サモア」と翻訳してください。\n"
+                "出力は日本語のみで行ってください。\n"
                 "日本語の翻訳のみを1行に1つずつ、入力と同じ順序で返してください。\n"
                 "番号付け、説明、その他の文章は含めないでください。\n"
                 f"\n{country_list}"
