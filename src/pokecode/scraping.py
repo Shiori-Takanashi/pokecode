@@ -4,8 +4,6 @@ import re
 
 logger = logging.getLogger(__name__)
 
-TargetElement = str | BeautifulSoup | Tag
-
 
 def make_soup(html: str) -> BeautifulSoup:
     try:
@@ -14,23 +12,11 @@ def make_soup(html: str) -> BeautifulSoup:
         raise RuntimeError(f"soupオブジェクトの作成に失敗: {e!r}") from e
 
 
-def scrape_tag_of_html(soup: BeautifulSoup) -> Tag:
+def scrape_html(soup: BeautifulSoup) -> Tag:
     html = soup.select_one("html")
     if html is None:
         raise ValueError("html tagが存在しない。")
     return html
-
-
-def scrape_from_tagname(elm: TargetElement, *, tagname: str) -> TargetElement:
-    if not isinstance(elm, TargetElement):
-        raise TypeError("解析不能なオブジェクトが渡されました。")
-    result_of_find = elm.find(tagname)
-    if result_of_find is None:
-        raise ValueError("発見できませんでした。")
-    if isinstance(result_of_find, int):
-        raise ValueError("int型は発見されないはずです。")
-    logger.info(type(result_of_find))
-    return result_of_find
 
 
 def scrape_cards_from_html(html: Tag) -> list[Tag]:
@@ -75,6 +61,17 @@ def scrape_trainers(card: Tag) -> list[Tag]:
     if not trainers:
         raise ValueError("trainersが見つかりません。")
     return trainers
+
+
+def scrape_friend_code_from_trainer(trainer: Tag) -> str:
+    button = trainer.select_one("div.card > div.card-body > button")
+    if button is None:
+        raise ValueError("buttonが発見できません。")
+    friend_code = button["data-friend-code"]
+    if isinstance(friend_code, str):
+        return str(friend_code)
+    else:
+        return ""
 
 
 def scrape_code(trainer: Tag) -> str:
