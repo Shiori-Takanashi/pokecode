@@ -110,7 +110,6 @@ dist/
 
 # Debug and documentation
 .debug_log/
-.docs/
 lesson/
 
 # Output files
