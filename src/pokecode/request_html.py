@@ -6,8 +6,6 @@ from requests import Response
 
 logger = logging.getLogger(__name__)
 
-HtmlResult = str
-
 
 @dataclass(frozen=True)
 class ResponseContext:
@@ -30,7 +28,7 @@ class EmptyResponseError(ContractViolationError):
     """レスポンスが空"""
 
 
-def request_html(url: str, *, timeout: float = 30.0) -> HtmlResult:
+def request_html(url: str, *, timeout: float = 30.0) -> str:
     logger.info("Request start: %s", url)
 
     try:
@@ -87,7 +85,7 @@ def _ensure_html_content_type(res: Response, *, url: str) -> None:
         raise InvalidContentTypeError(f"Expected HTML Content-Type but got: {ct!r}")
 
 
-def _extract_html_with_log(res: Response, *, url: str) -> HtmlResult:
+def _extract_html_with_log(res: Response, *, url: str) -> str:
     """HTML テキストを抽出"""
     html = res.text
 
