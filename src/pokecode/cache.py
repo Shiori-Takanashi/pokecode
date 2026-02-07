@@ -69,6 +69,10 @@ class TranslationCache:
         """
         self.cache.update(items)
 
+    def delete(self) -> None:
+        self.cache = {}
+        self.cache_file.unlink(missing_ok=True)
+
     def __len__(self) -> int:
         """キャッシュのサイズを返す"""
         return len(self.cache)
