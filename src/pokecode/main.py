@@ -1,10 +1,12 @@
 # pokecode/main.py
 import logging
 import sys
+import json
+from pathlib import Path
 
 from pokecode.scraping import (
     make_soup,
-    scrape_tag_of_html,
+    scrape_html,
     scrape_cards_from_html,
     scrape_correct_card,
     # scrape_trainers,
@@ -13,33 +15,38 @@ from pokecode.scraping import (
     scrape_options,
     scrape_country,
     get_country_without_extra_chars,
+    scrape_trainers,
+    scrape_friend_code_from_trainer,
 )
 from pokecode.request_html import request_html
 from pokecode.logconfig import setup_logging
 from pokecode.loading import load_config
-from pokecode import config
+from pokecode.url_builder import build_url_with_code
+from pokecode.config import ConfigGetter
 from pokecode.paths import PYPROJECT
 from pokecode.io_writing import save_json
+from pokecode.translation import TranslationService
 
 
 def main() -> None:
     logger = logging.getLogger("pokecode")
-    setup_logging(logger=logger, level="INFO")
+    setup_logging(logger=logger, level="DEBUG")
 
     logger.info("Application Start.")
 
     try:
         load_config(PYPROJECT)
-        url = config.get_url()
+        cg = ConfigGetter()
+        domain = cg.get_domain()
 
-        html = request_html(url=url)
+        html = request_html(url=domain)
         logger.info("HTML retrieved: %d characters", len(html))
         soup = make_soup(html)
-        html = scrape_tag_of_html(soup)
+        html = scrape_html(soup)
         cards = scrape_cards_from_html(html)
         card_of_filter = scrape_correct_card(cards, "🔍 Filter Friend Codes")
-        selection = scrape_selection(card_of_filter)
-        options = scrape_options(selection)
+        select = scrape_selection(card_of_filter)
+        options = scrape_options(select)
         countires = [scrape_country(option) for option in options]
         countires_without_extra_chars = [
             result
@@ -47,14 +54,60 @@ def main() -> None:
             if (result := get_country_without_extra_chars(country)) is not None
         ]
 
-        # card_of_qr = scrape_correct_card(cards, "📱 Friend Codes")
-        # trainers = scrape_trainers(card_of_qr)
-        # codes = [scrape_code(trainer) for trainer in trainers]
+        codes_in_iso_alpha3 = [
+            cs.get("iso_alpha3", None) for cs in countires_without_extra_chars
+        ]
+
+        logger.debug(f"code_in_iso_alpha3: {len(codes_in_iso_alpha3)}")
 
         # コードを保存
-        output_file = config.get_output_file(suffix="02")
-        save_json(countires_without_extra_chars, output_file)
-        logger.info("Codes saved to: %s", output_file)
+        country_path: Path = cg.get_output_file("counties")
+        save_json(countires_without_extra_chars, country_path)
+        logger.info("Codes saved to: %s", country_path)
+
+        with open(country_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        ts = TranslationService()
+
+        transrated = ts.translate_countries_batch(
+            countries=data,
+            ignore_cache=False,
+            batch_size=10,
+        )
+
+        translated_path: Path = cg.get_output_file("countries_translated")
+
+        save_json(transrated, translated_path)
+        logger.info("Translated result saved to: %s", translated_path)
+
+        urls_with_code = [
+            build_url_with_code(code=c) for c in codes_in_iso_alpha3 if c is not None
+        ]
+
+        # for u in urls_with_code:
+        #     logger.debug(u)
+
+        save_json(urls_with_code, cg.get_output_file("url_with_code"))
+
+        for url in urls_with_code:
+            res = request_html(url)
+            soup = make_soup(res)
+            html = scrape_html(soup)
+            cards = scrape_cards_from_html(html)
+            card = scrape_correct_card(cards, "📱 Friend Codes")
+            trainers = scrape_trainers(card)
+            friends_codes = [
+                scrape_friend_code_from_trainer(trainer)
+                for trainer in trainers
+                if scrape_friend_code_from_trainer(trainer) != ""
+            ]
+            try:
+                code = url[-3:]
+            except Exception:
+                raise ValueError("codeが3文字ではない。")
+            save_json(friends_codes, cg.get_output_file(f"friend_codes_of_{code}"))
+            break
 
     except Exception:
         logger.exception("Unhandled exception")
