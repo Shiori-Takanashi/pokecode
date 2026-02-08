@@ -17,15 +17,16 @@ app = Flask(__name__, template_folder=str(TEMPLATES_DIR))
 logger = logging.getLogger(__name__)
 
 
-def load_config(pyproject_path: Path = PYPROJECT) -> dict:
+def load_config(
+    pyproject_path: Path = PYPROJECT,
+) -> dict:
     """pyproject.toml から設定を読み込む"""
     if not pyproject_path.exists():
         logger.error(
-            "Config file not found: %s", pyproject_path
+            "Config file not found: %s",
+            pyproject_path,
         )
-        raise FileNotFoundError(
-            f"pyproject.toml not found: {pyproject_path}"
-        )
+        raise FileNotFoundError(f"pyproject.toml not found: {pyproject_path}")
 
     with pyproject_path.open("rb") as f:
         data = tomllib.load(f)

@@ -1,7 +1,9 @@
 import logging
 import pytest
 from logging import StreamHandler
-from logging.handlers import TimedRotatingFileHandler
+from logging.handlers import (
+    TimedRotatingFileHandler,
+)
 
 from pokecode.logconfig import setup_logging
 

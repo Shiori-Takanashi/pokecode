@@ -4,9 +4,7 @@ import pytest
 
 def _reset_all_loggers():
     """すべてのロガーとハンドラーをリセット"""
-    for logger_name in list(
-        logging.Logger.manager.loggerDict.keys()
-    ):
+    for logger_name in list(logging.Logger.manager.loggerDict.keys()):
         logger = logging.getLogger(logger_name)
         for h in logger.handlers[:]:
             logger.removeHandler(h)

@@ -7,7 +7,10 @@ def create_qr(country: str) -> None:
     """
     国名を QR コード化して保存する
     """
-    if country not in ("JAPAN", "UNITED STATES OF AMERICA"):
+    if country not in (
+        "JAPAN",
+        "UNITED STATES OF AMERICA",
+    ):
         raise ValueError(f"Unsupported content: {country}")
 
     STATIC_DIR.mkdir(parents=True, exist_ok=True)

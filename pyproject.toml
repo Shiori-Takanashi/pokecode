@@ -43,7 +43,7 @@ local_json_url = "http://localhost:5000/json"
 target-version = "py314"
 
 # 行の最大数
-line-length = 60
+line-length = 80
 
 # チェック対象から除外するパス
 exclude = [

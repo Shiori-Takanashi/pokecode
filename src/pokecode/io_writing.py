@@ -11,9 +11,7 @@ from typing import Any
 logger = logging.getLogger(__name__)
 
 
-def save_json(
-    data: Any, filepath: Path, *, indent: int = 2
-) -> None:
+def save_json(data: Any, filepath: Path, *, indent: int = 2) -> None:
     """
     データをJSONファイルに保存
 
@@ -33,7 +31,10 @@ def save_json(
 
         with filepath.open("w", encoding="utf-8") as f:
             json.dump(
-                data, f, ensure_ascii=False, indent=indent
+                data,
+                f,
+                ensure_ascii=False,
+                indent=indent,
             )
 
         logger.info(

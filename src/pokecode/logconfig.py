@@ -1,7 +1,11 @@
 # pokecode/logconfig.py
 from datetime import datetime
 import logging
-from logging import Logger, StreamHandler, FileHandler
+from logging import (
+    Logger,
+    StreamHandler,
+    FileHandler,
+)
 from pathlib import Path
 
 from pokecode.paths import PROJECT_ROOT
@@ -10,9 +14,7 @@ _CONSOLE_NAME = "console"
 _FILE_NAME = "file"
 
 
-def _resolve_logfile(
-    *, logdir_name: str, logname: str
-) -> Path:
+def _resolve_logfile(*, logdir_name: str, logname: str) -> Path:
     """ログファイルのパスを解決"""
     logdir = PROJECT_ROOT / logdir_name
     logdir.mkdir(parents=True, exist_ok=True)
@@ -35,15 +37,11 @@ def setup_logging(
         logdir_name: ログディレクトリ名
         logname: ログファイル名
     """
-    fmt = (
-        "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
-    )
+    fmt = "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
     datefmt = "%Y-%m-%d %H:%M:%S"
     formatter = logging.Formatter(fmt=fmt, datefmt=datefmt)
 
-    resolved_level = getattr(
-        logging, level.upper(), logging.INFO
-    )
+    resolved_level = getattr(logging, level.upper(), logging.INFO)
     logger.setLevel(resolved_level)
     logger.propagate = False
 
@@ -65,12 +63,8 @@ def setup_logging(
     sh.setFormatter(formatter)
 
     # FileHandler（重複チェック）
-    logname = (
-        f"{logname_prefix}.log.{datetime.now():%Y-%m-%d}"
-    )
-    filepath = _resolve_logfile(
-        logdir_name=logdir_name, logname=logname
-    )
+    logname = f"{logname_prefix}.log.{datetime.now():%Y-%m-%d}"
+    filepath = _resolve_logfile(logdir_name=logdir_name, logname=logname)
 
     fh = None
     for h in logger.handlers:

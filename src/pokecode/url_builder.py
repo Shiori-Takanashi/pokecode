@@ -6,9 +6,7 @@ from pokecode.logconfig import setup_logging
 logger = logging.getLogger(__name__)
 
 
-def build_url_with_code(
-    *, domain: str = "None", code: str = "None"
-) -> str:
+def build_url_with_code(*, domain: str = "None", code: str = "None") -> str:
     setup_logging(logger=logger, level="INFO")
     if code == "None" or len(code) != 3:
         logger.error(f"codeが不正です :{code}")

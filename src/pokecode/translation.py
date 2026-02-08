@@ -17,21 +17,13 @@ class TranslationService:
         setup_logging(logger=logger, level="INFO")
         self.cache = TranslationCache(cache_dir=cache_dir)
         self.api_key = os.getenv("OPENAI_API_KEY")
-        self.model = os.getenv(
-            "OPENAI_MODEL", "gpt-3.5-turbo"
-        )
-        self.timeout = int(
-            os.getenv("OPENAI_REQUEST_TIMEOUT", "30")
-        )
+        self.model = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
+        self.timeout = int(os.getenv("OPENAI_REQUEST_TIMEOUT", "30"))
 
         if not self.api_key:
-            logger.warning(
-                "OPENAI_API_KEYが環境変数に設定されていません"
-            )
+            logger.warning("OPENAI_API_KEYが環境変数に設定されていません")
 
-    def translate_country_name(
-        self, country_name: str
-    ) -> str:
+    def translate_country_name(self, country_name: str) -> str:
         """単一の国名を翻訳する
 
         Args:
@@ -43,9 +35,7 @@ class TranslationService:
         # キャッシュから取得
         cached = self.cache.get(country_name)
         if cached:
-            logger.debug(
-                f"キャッシュから取得: {country_name} -> {cached}"
-            )
+            logger.debug(f"キャッシュから取得: {country_name} -> {cached}")
             return cached
 
         # APIで翻訳
@@ -55,19 +45,13 @@ class TranslationService:
                 ja_name = result[country_name]
                 self.cache.set(country_name, ja_name)
                 self.cache.save()
-                logger.info(
-                    f"翻訳成功: {country_name} -> {ja_name}"
-                )
+                logger.info(f"翻訳成功: {country_name} -> {ja_name}")
                 return ja_name
         except Exception as e:
-            logger.error(
-                f"翻訳に失敗: {country_name} - {e!r}"
-            )
+            logger.error(f"翻訳に失敗: {country_name} - {e!r}")
 
         # フォールバック: 元の名前を返す
-        logger.warning(
-            f"翻訳失敗、元の名前を返す: {country_name}"
-        )
+        logger.warning(f"翻訳失敗、元の名前を返す: {country_name}")
         return country_name
 
     def translate_countries_batch(
@@ -87,18 +71,14 @@ class TranslationService:
             country_name_jaフィールドが追加された国情報のリスト
         """
         result = []
-        country_names = [
-            c["country_name"] for c in countries
-        ]
+        country_names = [c["country_name"] for c in countries]
 
         if ignore_cache:
             self.cache.delete()
 
         # キャッシュにない国を特定
         to_translate = [
-            name
-            for name in country_names
-            if name not in self.cache
+            name for name in country_names if name not in self.cache
         ]
 
         if to_translate:
@@ -107,24 +87,22 @@ class TranslationService:
             )
             self._translate_batch(to_translate, batch_size)
         else:
-            logger.info(
-                "すべての国がキャッシュに存在します"
-            )
+            logger.info("すべての国がキャッシュに存在します")
 
         # 結果を構築
         for country in countries:
             country_copy = country.copy()
             country_name = country["country_name"]
-            ja_name = (
-                self.cache.get(country_name) or country_name
-            )
+            ja_name = self.cache.get(country_name) or country_name
             country_copy["country_name_ja"] = ja_name
             result.append(country_copy)
 
         return result
 
     def _translate_batch(
-        self, country_names: list[str], batch_size: int = 10
+        self,
+        country_names: list[str],
+        batch_size: int = 10,
     ) -> None:
         """複数の国名を分割してAPI呼び出しする
 
@@ -169,7 +147,8 @@ class TranslationService:
             from openai import OpenAI
 
             client = OpenAI(
-                api_key=self.api_key, timeout=self.timeout
+                api_key=self.api_key,
+                timeout=self.timeout,
             )
 
             country_list = "\n".join(country_names)
@@ -188,7 +167,10 @@ class TranslationService:
             response = client.chat.completions.create(
                 model=self.model,
                 messages=[
-                    {"role": "user", "content": prompt}
+                    {
+                        "role": "user",
+                        "content": prompt,
+                    }
                 ],
                 temperature=0,
             )
@@ -209,20 +191,14 @@ class TranslationService:
 
             result = {
                 name: translation.strip()
-                for name, translation in zip(
-                    country_names, translations
-                )
+                for name, translation in zip(country_names, translations)
             }
             logger.debug(f"API翻訳結果: {result}")
             return result
 
         except ImportError:
-            logger.error(
-                "openaiライブラリがインストールされていません"
-            )
-            logger.info(
-                "以下を実行してください: pip install openai"
-            )
+            logger.error("openaiライブラリがインストールされていません")
+            logger.info("以下を実行してください: pip install openai")
             return None
         except Exception as e:
             logger.error(f"OpenAI API呼び出しに失敗: {e!r}")
