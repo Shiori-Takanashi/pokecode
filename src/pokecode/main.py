@@ -41,8 +41,8 @@ def main() -> None:
 
     try:
         load_config(PYPROJECT)
-        cg = ConfigGetter()
-        domain = cg.get_domain()
+        cget = ConfigGetter()
+        domain = cget.get_domain()
 
         html = request_html(url=domain)
         logger.info(
@@ -69,7 +69,7 @@ def main() -> None:
         logger.debug(f"code_in_iso_alpha3: {len(codes_in_iso_alpha3)}")
 
         # コードを保存
-        country_path: Path = cg.get_output_file("country_en")
+        country_path: Path = cget.get_output_file("country_en")
         save_json(
             countires_without_extra_chars,
             country_path,
@@ -89,7 +89,7 @@ def main() -> None:
         for elm in translated:
             elm.pop("country_en", None)
 
-        translated_path: Path = cg.get_output_file("country_ja")
+        translated_path: Path = cget.get_output_file("country_ja")
 
         save_json(translated, translated_path)
         logger.info(
@@ -98,7 +98,7 @@ def main() -> None:
         )
 
         result_of_jp = all_process()
-        save_json(result_of_jp, cg.get_output_file("japanese"))
+        save_json(result_of_jp, cget.get_output_file("japanese"))
 
         urls_with_code = [
             build_url_with_code(code=c)
@@ -111,7 +111,7 @@ def main() -> None:
 
         save_json(
             urls_with_code,
-            cg.get_output_file("urls"),
+            cget.get_output_file("urls"),
         )
 
         for url in urls_with_code:
@@ -132,7 +132,7 @@ def main() -> None:
                 raise ValueError("codeが3文字ではない。")
             save_json(
                 friends_codes,
-                cg.get_output_file(f"{code}"),
+                cget.get_output_file(f"{code}"),
             )
             break
 

@@ -12,10 +12,10 @@ def build_url_with_code(*, domain: str = "None", code: str = "None") -> str:
         logger.error(f"codeが不正です :{code}")
         raise ValueError("codeが不正です。")
     if domain == "None":
-        cg = ConfigGetter()
-        url = cg.get_domain()
+        cget = ConfigGetter()
+        url = cget.get_domain()
         url_with_code = f"{url}/?country={code}"
     else:
         url_with_code = f"{domain}/?country={code}"
-    logger.info(url_with_code)
+    logger.debug(url_with_code)
     return url_with_code
