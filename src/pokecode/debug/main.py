@@ -43,7 +43,9 @@ def main():
 
     # 翻訳実行
     logger.info("翻訳を開始します...")
-    translated = service.translate_countries_batch(countries, batch_size=10)
+    translated = service.translate_countries_batch(
+        countries=countries, ignore_cache=True, batch_size=10
+    )
     logger.info("翻訳完了")
 
     # JSONファイルに保存
