@@ -30,6 +30,7 @@ from pokecode.io_writing import save_json
 from pokecode.translation import (
     TranslationService,
 )
+from pokecode.transfer_json import all_process
 
 
 def main() -> None:
@@ -68,7 +69,7 @@ def main() -> None:
         logger.debug(f"code_in_iso_alpha3: {len(codes_in_iso_alpha3)}")
 
         # コードを保存
-        country_path: Path = cg.get_output_file("counties")
+        country_path: Path = cg.get_output_file("country_en")
         save_json(
             countires_without_extra_chars,
             country_path,
@@ -80,19 +81,24 @@ def main() -> None:
 
         ts = TranslationService()
 
-        transrated = ts.translate_countries_batch(
+        translated = ts.translate_countries_batch(
             countries=data,
             ignore_cache=False,
             batch_size=10,
         )
+        for elm in translated:
+            elm.pop("country_en", None)
 
-        translated_path: Path = cg.get_output_file("countries_translated")
+        translated_path: Path = cg.get_output_file("country_ja")
 
-        save_json(transrated, translated_path)
+        save_json(translated, translated_path)
         logger.info(
             "Translated result saved to: %s",
             translated_path,
         )
+
+        result_of_jp = all_process()
+        save_json(result_of_jp, cg.get_output_file("japanese"))
 
         urls_with_code = [
             build_url_with_code(code=c)
@@ -105,7 +111,7 @@ def main() -> None:
 
         save_json(
             urls_with_code,
-            cg.get_output_file("url_with_code"),
+            cg.get_output_file("urls"),
         )
 
         for url in urls_with_code:
@@ -126,7 +132,7 @@ def main() -> None:
                 raise ValueError("codeが3文字ではない。")
             save_json(
                 friends_codes,
-                cg.get_output_file(f"friend_codes_of_{code}"),
+                cg.get_output_file(f"{code}"),
             )
             break
 
