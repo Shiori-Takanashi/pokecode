@@ -27,6 +27,12 @@ pokecode = "pokecode:main"
 host = "127.0.0.1"
 port = "5000"
 
+[tool.taskipy.tasks]
+fmt = "ruff check --fix . && ruff format ."
+main = "python -m pokecode.main"
+debug = "python -m pokecode.debug.main"
+server = "python -m server.app"
+
 [tool.pokecode]
 # ログ関連（環境変数 POKECODE_* で上書き可能）
 logdir = "logs"
@@ -63,4 +69,5 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "ruff>=0.14.14",
+    "taskipy>=1.14.1",
 ]
