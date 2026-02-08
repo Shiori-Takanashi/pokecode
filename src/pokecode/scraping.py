@@ -111,7 +111,7 @@ def scrape_country(option: Tag) -> dict[str, str]:
     code = str(code)
     return {
         "iso_alpha3": code,
-        "country_name": name,
+        "country_en": name,
     }
 
 
