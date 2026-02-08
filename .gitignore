@@ -110,8 +110,9 @@ dist/
 
 # Debug and documentation
 .debug_log/
-lesson/
+lesson
 
 # Output files
 output/*.json
-.cache/
+.cache
+output
