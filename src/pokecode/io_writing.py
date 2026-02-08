@@ -11,7 +11,9 @@ from typing import Any
 logger = logging.getLogger(__name__)
 
 
-def save_json(data: Any, filepath: Path, *, indent: int = 2) -> None:
+def save_json(
+    data: Any, filepath: Path, *, indent: int = 2
+) -> None:
     """
     データをJSONファイルに保存
 
@@ -30,180 +32,185 @@ def save_json(data: Any, filepath: Path, *, indent: int = 2) -> None:
         filepath.parent.mkdir(parents=True, exist_ok=True)
 
         with filepath.open("w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=indent)
+            json.dump(
+                data, f, ensure_ascii=False, indent=indent
+            )
 
-        logger.info("JSON saved successfully: %d bytes", filepath.stat().st_size)
+        logger.info(
+            "JSON saved successfully: %d bytes",
+            filepath.stat().st_size,
+        )
     except Exception as e:
         logger.error("Failed to save JSON: %s", e)
         raise
 
 
-def load_json(filepath: Path) -> Any:
-    """
-    JSONファイルを読み込み
+# def load_json(filepath: Path) -> Any:
+#     """
+#     JSONファイルを読み込み
 
-    Args:
-        filepath: 読み込むファイルパス
+#     Args:
+#         filepath: 読み込むファイルパス
 
-    Returns:
-        JSONデータ（辞書、リスト等）
+#     Returns:
+#         JSONデータ（辞書、リスト等）
 
-    Raises:
-        FileNotFoundError: ファイルが存在しない
-        json.JSONDecodeError: JSON解析エラー
-    """
-    logger.info("Loading JSON from: %s", filepath)
+#     Raises:
+#         FileNotFoundError: ファイルが存在しない
+#         json.JSONDecodeError: JSON解析エラー
+#     """
+#     logger.info("Loading JSON from: %s", filepath)
 
-    if not filepath.exists():
-        logger.error("File not found: %s", filepath)
-        raise FileNotFoundError(f"ファイルが見つかりません: {filepath}")
+#     if not filepath.exists():
+#         logger.error("File not found: %s", filepath)
+#         raise FileNotFoundError(f"ファイルが見つかりません: {filepath}")
 
-    try:
-        with filepath.open("r", encoding="utf-8") as f:
-            data = json.load(f)
+#     try:
+#         with filepath.open("r", encoding="utf-8") as f:
+#             data = json.load(f)
 
-        logger.info("JSON loaded successfully: type=%s", type(data).__name__)
-        return data
-    except Exception as e:
-        logger.error("Failed to load JSON: %s", e)
-        raise
-
-
-def save_text(text: str, filepath: Path, *, encoding: str = "utf-8") -> None:
-    """
-    テキストをファイルに保存
-
-    Args:
-        text: 保存するテキスト
-        filepath: 保存先ファイルパス
-        encoding: 文字エンコーディング（デフォルト: utf-8）
-
-    Raises:
-        OSError: ファイル書き込みエラー
-    """
-    logger.info("Saving text to: %s", filepath)
-
-    try:
-        filepath.parent.mkdir(parents=True, exist_ok=True)
-
-        with filepath.open("w", encoding=encoding) as f:
-            f.write(text)
-
-        logger.info("Text saved successfully: %d bytes", filepath.stat().st_size)
-    except Exception as e:
-        logger.error("Failed to save text: %s", e)
-        raise
+#         logger.info("JSON loaded successfully: type=%s", type(data).__name__)
+#         return data
+#     except Exception as e:
+#         logger.error("Failed to load JSON: %s", e)
+#         raise
 
 
-def load_text(filepath: Path, *, encoding: str = "utf-8") -> str:
-    """
-    テキストファイルを読み込み
+# def save_text(text: str, filepath: Path, *, encoding: str = "utf-8") -> None:
+#     """
+#     テキストをファイルに保存
 
-    Args:
-        filepath: 読み込むファイルパス
-        encoding: 文字エンコーディング（デフォルト: utf-8）
+#     Args:
+#         text: 保存するテキスト
+#         filepath: 保存先ファイルパス
+#         encoding: 文字エンコーディング（デフォルト: utf-8）
 
-    Returns:
-        ファイルの内容
+#     Raises:
+#         OSError: ファイル書き込みエラー
+#     """
+#     logger.info("Saving text to: %s", filepath)
 
-    Raises:
-        FileNotFoundError: ファイルが存在しない
-        UnicodeDecodeError: エンコーディングエラー
-    """
-    logger.info("Loading text from: %s", filepath)
+#     try:
+#         filepath.parent.mkdir(parents=True, exist_ok=True)
 
-    if not filepath.exists():
-        logger.error("File not found: %s", filepath)
-        raise FileNotFoundError(f"ファイルが見つかりません: {filepath}")
+#         with filepath.open("w", encoding=encoding) as f:
+#             f.write(text)
 
-    try:
-        with filepath.open("r", encoding=encoding) as f:
-            text = f.read()
-
-        logger.info("Text loaded successfully: %d characters", len(text))
-        return text
-    except Exception as e:
-        logger.error("Failed to load text: %s", e)
-        raise
+#         logger.info("Text saved successfully: %d bytes", filepath.stat().st_size)
+#     except Exception as e:
+#         logger.error("Failed to save text: %s", e)
+#         raise
 
 
-def save_lines(lines: list[str], filepath: Path, *, encoding: str = "utf-8") -> None:
-    """
-    行のリストをファイルに保存
+# def load_text(filepath: Path, *, encoding: str = "utf-8") -> str:
+#     """
+#     テキストファイルを読み込み
 
-    Args:
-        lines: 保存する行のリスト
-        filepath: 保存先ファイルパス
-        encoding: 文字エンコーディング（デフォルト: utf-8）
+#     Args:
+#         filepath: 読み込むファイルパス
+#         encoding: 文字エンコーディング（デフォルト: utf-8）
 
-    Raises:
-        OSError: ファイル書き込みエラー
-    """
-    logger.info("Saving %d lines to: %s", len(lines), filepath)
+#     Returns:
+#         ファイルの内容
 
-    try:
-        filepath.parent.mkdir(parents=True, exist_ok=True)
+#     Raises:
+#         FileNotFoundError: ファイルが存在しない
+#         UnicodeDecodeError: エンコーディングエラー
+#     """
+#     logger.info("Loading text from: %s", filepath)
 
-        with filepath.open("w", encoding=encoding) as f:
-            for line in lines:
-                f.write(f"{line}\n")
+#     if not filepath.exists():
+#         logger.error("File not found: %s", filepath)
+#         raise FileNotFoundError(f"ファイルが見つかりません: {filepath}")
 
-        logger.info("Lines saved successfully: %d bytes", filepath.stat().st_size)
-    except Exception as e:
-        logger.error("Failed to save lines: %s", e)
-        raise
+#     try:
+#         with filepath.open("r", encoding=encoding) as f:
+#             text = f.read()
 
-
-def load_lines(filepath: Path, *, encoding: str = "utf-8") -> list[str]:
-    """
-    ファイルを行ごとに読み込み
-
-    Args:
-        filepath: 読み込むファイルパス
-        encoding: 文字エンコーディング（デフォルト: utf-8）
-
-    Returns:
-        行のリスト（末尾の改行文字は削除）
-
-    Raises:
-        FileNotFoundError: ファイルが存在しない
-        UnicodeDecodeError: エンコーディングエラー
-    """
-    logger.info("Loading lines from: %s", filepath)
-
-    if not filepath.exists():
-        logger.error("File not found: %s", filepath)
-        raise FileNotFoundError(f"ファイルが見つかりません: {filepath}")
-
-    try:
-        with filepath.open("r", encoding=encoding) as f:
-            lines = [line.rstrip("\n\r") for line in f]
-
-        logger.info("Lines loaded successfully: %d lines", len(lines))
-        return lines
-    except Exception as e:
-        logger.error("Failed to load lines: %s", e)
-        raise
+#         logger.info("Text loaded successfully: %d characters", len(text))
+#         return text
+#     except Exception as e:
+#         logger.error("Failed to load text: %s", e)
+#         raise
 
 
-def print_codes(codes: list[str]) -> None:
-    """
-    コードリストをコンソールに表示
+# def save_lines(lines: list[str], filepath: Path, *, encoding: str = "utf-8") -> None:
+#     """
+#     行のリストをファイルに保存
 
-    Args:
-        codes: 表示するコードのリスト
-    """
-    logger.info("Printing %d codes", len(codes))
+#     Args:
+#         lines: 保存する行のリスト
+#         filepath: 保存先ファイルパス
+#         encoding: 文字エンコーディング（デフォルト: utf-8）
 
-    if not codes:
-        print("コードが見つかりませんでした。")
-        return
+#     Raises:
+#         OSError: ファイル書き込みエラー
+#     """
+#     logger.info("Saving %d lines to: %s", len(lines), filepath)
 
-    print("\n" + "=" * 50)
-    print(f"取得したコード: {len(codes)}件")
-    print("=" * 50)
+#     try:
+#         filepath.parent.mkdir(parents=True, exist_ok=True)
 
-    for i, code in enumerate(codes, 1):
-        print(f"{i}. {code}")
+#         with filepath.open("w", encoding=encoding) as f:
+#             for line in lines:
+#                 f.write(f"{line}\n")
 
-    print("=" * 50 + "\n")
+#         logger.info("Lines saved successfully: %d bytes", filepath.stat().st_size)
+#     except Exception as e:
+#         logger.error("Failed to save lines: %s", e)
+#         raise
+
+
+# def load_lines(filepath: Path, *, encoding: str = "utf-8") -> list[str]:
+#     """
+#     ファイルを行ごとに読み込み
+
+#     Args:
+#         filepath: 読み込むファイルパス
+#         encoding: 文字エンコーディング（デフォルト: utf-8）
+
+#     Returns:
+#         行のリスト（末尾の改行文字は削除）
+
+#     Raises:
+#         FileNotFoundError: ファイルが存在しない
+#         UnicodeDecodeError: エンコーディングエラー
+#     """
+#     logger.info("Loading lines from: %s", filepath)
+
+#     if not filepath.exists():
+#         logger.error("File not found: %s", filepath)
+#         raise FileNotFoundError(f"ファイルが見つかりません: {filepath}")
+
+#     try:
+#         with filepath.open("r", encoding=encoding) as f:
+#             lines = [line.rstrip("\n\r") for line in f]
+
+#         logger.info("Lines loaded successfully: %d lines", len(lines))
+#         return lines
+#     except Exception as e:
+#         logger.error("Failed to load lines: %s", e)
+#         raise
+
+
+# def print_codes(codes: list[str]) -> None:
+#     """
+#     コードリストをコンソールに表示
+
+#     Args:
+#         codes: 表示するコードのリスト
+#     """
+#     logger.info("Printing %d codes", len(codes))
+
+#     if not codes:
+#         print("コードが見つかりませんでした。")
+#         return
+
+#     print("\n" + "=" * 50)
+#     print(f"取得したコード: {len(codes)}件")
+#     print("=" * 50)
+
+#     for i, code in enumerate(codes, 1):
+#         print(f"{i}. {code}")
+
+#     print("=" * 50 + "\n")

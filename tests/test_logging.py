@@ -18,7 +18,8 @@ def test_setup_logging_adds_console_handler():
     console_handlers = [
         h
         for h in configured_handlers
-        if isinstance(h, StreamHandler) and getattr(h, "name", None) == "console"
+        if isinstance(h, StreamHandler)
+        and getattr(h, "name", None) == "console"
     ]
 
     file_handlers = [

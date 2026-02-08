@@ -40,29 +40,45 @@ def main() -> None:
         domain = cg.get_domain()
 
         html = request_html(url=domain)
-        logger.info("HTML retrieved: %d characters", len(html))
+        logger.info(
+            "HTML retrieved: %d characters", len(html)
+        )
         soup = make_soup(html)
         html = scrape_html(soup)
         cards = scrape_cards_from_html(html)
-        card_of_filter = scrape_correct_card(cards, "🔍 Filter Friend Codes")
+        card_of_filter = scrape_correct_card(
+            cards, "🔍 Filter Friend Codes"
+        )
         select = scrape_selection(card_of_filter)
         options = scrape_options(select)
-        countires = [scrape_country(option) for option in options]
+        countires = [
+            scrape_country(option) for option in options
+        ]
         countires_without_extra_chars = [
             result
             for country in countires
-            if (result := get_country_without_extra_chars(country)) is not None
+            if (
+                result := get_country_without_extra_chars(
+                    country
+                )
+            )
+            is not None
         ]
 
         codes_in_iso_alpha3 = [
-            cs.get("iso_alpha3", None) for cs in countires_without_extra_chars
+            cs.get("iso_alpha3", None)
+            for cs in countires_without_extra_chars
         ]
 
-        logger.debug(f"code_in_iso_alpha3: {len(codes_in_iso_alpha3)}")
+        logger.debug(
+            f"code_in_iso_alpha3: {len(codes_in_iso_alpha3)}"
+        )
 
         # コードを保存
         country_path: Path = cg.get_output_file("counties")
-        save_json(countires_without_extra_chars, country_path)
+        save_json(
+            countires_without_extra_chars, country_path
+        )
         logger.info("Codes saved to: %s", country_path)
 
         with open(country_path, "r", encoding="utf-8") as f:
@@ -76,37 +92,55 @@ def main() -> None:
             batch_size=10,
         )
 
-        translated_path: Path = cg.get_output_file("countries_translated")
+        translated_path: Path = cg.get_output_file(
+            "countries_translated"
+        )
 
         save_json(transrated, translated_path)
-        logger.info("Translated result saved to: %s", translated_path)
+        logger.info(
+            "Translated result saved to: %s",
+            translated_path,
+        )
 
         urls_with_code = [
-            build_url_with_code(code=c) for c in codes_in_iso_alpha3 if c is not None
+            build_url_with_code(code=c)
+            for c in codes_in_iso_alpha3
+            if c is not None
         ]
 
         # for u in urls_with_code:
         #     logger.debug(u)
 
-        save_json(urls_with_code, cg.get_output_file("url_with_code"))
+        save_json(
+            urls_with_code,
+            cg.get_output_file("url_with_code"),
+        )
 
         for url in urls_with_code:
             res = request_html(url)
             soup = make_soup(res)
             html = scrape_html(soup)
             cards = scrape_cards_from_html(html)
-            card = scrape_correct_card(cards, "📱 Friend Codes")
+            card = scrape_correct_card(
+                cards, "📱 Friend Codes"
+            )
             trainers = scrape_trainers(card)
             friends_codes = [
                 scrape_friend_code_from_trainer(trainer)
                 for trainer in trainers
-                if scrape_friend_code_from_trainer(trainer) != ""
+                if scrape_friend_code_from_trainer(trainer)
+                != ""
             ]
             try:
                 code = url[-3:]
             except Exception:
                 raise ValueError("codeが3文字ではない。")
-            save_json(friends_codes, cg.get_output_file(f"friend_codes_of_{code}"))
+            save_json(
+                friends_codes,
+                cg.get_output_file(
+                    f"friend_codes_of_{code}"
+                ),
+            )
             break
 
     except Exception:

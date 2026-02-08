@@ -9,7 +9,9 @@ from pathlib import Path
 from pokecode.getpath import get_project_root_to_parent
 
 # プロジェクトルート検出
-PROJECT_ROOT = get_project_root_to_parent(Path(__file__).parent)
+PROJECT_ROOT = get_project_root_to_parent(
+    Path(__file__).parent
+)
 
 # 各種パス定数
 PYPROJECT = PROJECT_ROOT / "pyproject.toml"

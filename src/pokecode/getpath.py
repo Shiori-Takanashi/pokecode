@@ -24,13 +24,19 @@ def get_project_root_to_parent(dirpath: Path) -> Path:
         DirectoryNotFoundError: プロジェクトルートが見つからない
     """
     if not dirpath.is_dir():
-        raise ValueError(f"引数がディレクトリではありません: {dirpath}")
+        raise ValueError(
+            f"引数がディレクトリではありません: {dirpath}"
+        )
 
-    if (dirpath / ".git").exists() or (dirpath / ".venv").exists():
+    if (dirpath / ".git").exists() or (
+        dirpath / ".venv"
+    ).exists():
         return dirpath.resolve()
 
     if dirpath == dirpath.parent:
-        raise DirectoryNotFoundError("プロジェクトルートが見つかりませんでした。")
+        raise DirectoryNotFoundError(
+            "プロジェクトルートが見つかりませんでした。"
+        )
 
     return get_project_root_to_parent(dirpath.parent)
 
@@ -57,7 +63,9 @@ def get_pyproject_to_parent(dirpath: Path) -> Path:
     if pyproject.is_file():
         return pyproject
 
-    if (dirpath / ".git").exists() or (dirpath / ".venv").exists():
+    if (dirpath / ".git").exists() or (
+        dirpath / ".venv"
+    ).exists():
         raise FileNotFoundError(
             "プロジェクトルートまで遡りましたが、pyproject.toml がありません。"
         )

@@ -45,7 +45,9 @@ def request_html(url: str, *, timeout: float = 30.0) -> str:
         _ensure_html_content_type(res, url=url)
         html = _extract_html_with_log(res, url=url)
 
-        logger.debug("Request success: url=%s len=%d", url, len(html))
+        logger.debug(
+            "Request success: url=%s len=%d", url, len(html)
+        )
         return html
 
     except requests.RequestException:
@@ -53,12 +55,16 @@ def request_html(url: str, *, timeout: float = 30.0) -> str:
         raise
 
 
-def _raise_for_status_with_log(res: Response, *, url: str) -> None:
+def _raise_for_status_with_log(
+    res: Response, *, url: str
+) -> None:
     """HTTP ステータスエラーをチェック"""
     try:
         res.raise_for_status()
     except requests.HTTPError:
-        ctx = _build_context(res, url=url, include_snippet=True)
+        ctx = _build_context(
+            res, url=url, include_snippet=True
+        )
         logger.error(
             "HTTP error: url=%s status=%s reason=%s content-type=%s snippet=%s",
             ctx.url,
@@ -70,11 +76,15 @@ def _raise_for_status_with_log(res: Response, *, url: str) -> None:
         raise
 
 
-def _ensure_html_content_type(res: Response, *, url: str) -> None:
+def _ensure_html_content_type(
+    res: Response, *, url: str
+) -> None:
     """Content-Type が HTML であることを確認"""
     ct = res.headers.get("Content-Type")
     if not _looks_like_html_content_type(ct):
-        ctx = _build_context(res, url=url, include_snippet=True)
+        ctx = _build_context(
+            res, url=url, include_snippet=True
+        )
         logger.error(
             "Invalid content-type: url=%s status=%s content-type=%s snippet=%s",
             ctx.url,
@@ -82,15 +92,21 @@ def _ensure_html_content_type(res: Response, *, url: str) -> None:
             ctx.content_type,
             ctx.snippet,
         )
-        raise InvalidContentTypeError(f"Expected HTML Content-Type but got: {ct!r}")
+        raise InvalidContentTypeError(
+            f"Expected HTML Content-Type but got: {ct!r}"
+        )
 
 
-def _extract_html_with_log(res: Response, *, url: str) -> str:
+def _extract_html_with_log(
+    res: Response, *, url: str
+) -> str:
     """HTML テキストを抽出"""
     html = res.text
 
     if not html:
-        ctx = _build_context(res, url=url, include_snippet=False)
+        ctx = _build_context(
+            res, url=url, include_snippet=False
+        )
         logger.error(
             "Empty response: url=%s status=%s content-type=%s",
             ctx.url,
@@ -102,7 +118,9 @@ def _extract_html_with_log(res: Response, *, url: str) -> str:
     return html
 
 
-def _looks_like_html_content_type(content_type: str | None) -> bool:
+def _looks_like_html_content_type(
+    content_type: str | None,
+) -> bool:
     """Content-Type が HTML らしいか判定"""
     if not content_type:
         return False
@@ -131,7 +149,9 @@ def _build_context(
     )
 
 
-def _response_snippet(res: Response, *, limit_chars: int) -> str:
+def _response_snippet(
+    res: Response, *, limit_chars: int
+) -> str:
     """レスポンスボディのスニペットを生成"""
     try:
         text = res.text

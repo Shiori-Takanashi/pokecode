@@ -10,7 +10,9 @@ _CONSOLE_NAME = "console"
 _FILE_NAME = "file"
 
 
-def _resolve_logfile(*, logdir_name: str, logname: str) -> Path:
+def _resolve_logfile(
+    *, logdir_name: str, logname: str
+) -> Path:
     """ログファイルのパスを解決"""
     logdir = PROJECT_ROOT / logdir_name
     logdir.mkdir(parents=True, exist_ok=True)
@@ -33,18 +35,25 @@ def setup_logging(
         logdir_name: ログディレクトリ名
         logname: ログファイル名
     """
-    fmt = "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+    fmt = (
+        "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+    )
     datefmt = "%Y-%m-%d %H:%M:%S"
     formatter = logging.Formatter(fmt=fmt, datefmt=datefmt)
 
-    resolved_level = getattr(logging, level.upper(), logging.INFO)
+    resolved_level = getattr(
+        logging, level.upper(), logging.INFO
+    )
     logger.setLevel(resolved_level)
     logger.propagate = False
 
     # StreamHandler（重複チェック）
     sh = None
     for h in logger.handlers:
-        if isinstance(h, StreamHandler) and getattr(h, "name", None) == _CONSOLE_NAME:
+        if (
+            isinstance(h, StreamHandler)
+            and getattr(h, "name", None) == _CONSOLE_NAME
+        ):
             sh = h
             break
 
@@ -56,18 +65,29 @@ def setup_logging(
     sh.setFormatter(formatter)
 
     # FileHandler（重複チェック）
-    logname = f"{logname_prefix}.log.{datetime.now():%Y-%m-%d}"
-    filepath = _resolve_logfile(logdir_name=logdir_name, logname=logname)
+    logname = (
+        f"{logname_prefix}.log.{datetime.now():%Y-%m-%d}"
+    )
+    filepath = _resolve_logfile(
+        logdir_name=logdir_name, logname=logname
+    )
 
     fh = None
     for h in logger.handlers:
-        if isinstance(h, FileHandler) and getattr(h, "name", None) == _FILE_NAME:
+        if (
+            isinstance(h, FileHandler)
+            and getattr(h, "name", None) == _FILE_NAME
+        ):
             fh = h
             break
 
     if fh is None:
         fh = FileHandler(
-            filename=filepath, mode="a", encoding="utf-8", delay=False, errors="strict"
+            filename=filepath,
+            mode="a",
+            encoding="utf-8",
+            delay=False,
+            errors="strict",
         )
         fh.name = _FILE_NAME
         logger.addHandler(fh)

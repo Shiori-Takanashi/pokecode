@@ -13,7 +13,9 @@ class TranslationCache:
     def __init__(self, cache_dir: str = ".cache"):
         setup_logging(logger=logger, level="INFO")
         self.cache_dir = Path(cache_dir)
-        self.cache_file = self.cache_dir / "translations.json"
+        self.cache_file = (
+            self.cache_dir / "translations.json"
+        )
         self.cache: dict[str, str] = {}
         self.load()
 
@@ -21,23 +23,42 @@ class TranslationCache:
         """キャッシュファイルからデータをロードする"""
         if self.cache_file.exists():
             try:
-                with open(self.cache_file, "r", encoding="utf-8") as f:
+                with open(
+                    self.cache_file, "r", encoding="utf-8"
+                ) as f:
                     self.cache = json.load(f)
-                logger.info(f"キャッシュをロード: {len(self.cache)}件")
+                logger.info(
+                    f"キャッシュをロード: {len(self.cache)}件"
+                )
             except Exception as e:
-                logger.error(f"キャッシュのロードに失敗: {e!r}")
+                logger.error(
+                    f"キャッシュのロードに失敗: {e!r}"
+                )
                 self.cache = {}
         else:
-            logger.info(f"キャッシュファイルが存在しません: {self.cache_file}")
+            logger.info(
+                f"キャッシュファイルが存在しません: {self.cache_file}"
+            )
             self.cache = {}
 
     def save(self) -> None:
         """キャッシュをファイルに保存する"""
         try:
-            self.cache_dir.mkdir(parents=True, exist_ok=True)
-            with open(self.cache_file, "w", encoding="utf-8") as f:
-                json.dump(self.cache, f, ensure_ascii=False, indent=2)
-            logger.info(f"キャッシュを保存: {len(self.cache)}件")
+            self.cache_dir.mkdir(
+                parents=True, exist_ok=True
+            )
+            with open(
+                self.cache_file, "w", encoding="utf-8"
+            ) as f:
+                json.dump(
+                    self.cache,
+                    f,
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            logger.info(
+                f"キャッシュを保存: {len(self.cache)}件"
+            )
         except Exception as e:
             logger.error(f"キャッシュの保存に失敗: {e!r}")
 

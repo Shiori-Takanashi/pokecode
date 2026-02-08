@@ -5,7 +5,11 @@ from pathlib import Path
 import tomllib
 from flask import Flask, jsonify, render_template
 
-from server.utils.paths import PYPROJECT, STATIC_DIR, TEMPLATES_DIR
+from server.utils.paths import (
+    PYPROJECT,
+    STATIC_DIR,
+    TEMPLATES_DIR,
+)
 from server.utils.create_qr import create_qr
 
 app = Flask(__name__, template_folder=str(TEMPLATES_DIR))
@@ -16,8 +20,12 @@ logger = logging.getLogger(__name__)
 def load_config(pyproject_path: Path = PYPROJECT) -> dict:
     """pyproject.toml から設定を読み込む"""
     if not pyproject_path.exists():
-        logger.error("Config file not found: %s", pyproject_path)
-        raise FileNotFoundError(f"pyproject.toml not found: {pyproject_path}")
+        logger.error(
+            "Config file not found: %s", pyproject_path
+        )
+        raise FileNotFoundError(
+            f"pyproject.toml not found: {pyproject_path}"
+        )
 
     with pyproject_path.open("rb") as f:
         data = tomllib.load(f)

@@ -24,8 +24,12 @@ def load_config(pyproject_path: Path = PYPROJECT) -> dict:
     logger.info("Loading config: %s", pyproject_path)
 
     if not pyproject_path.exists():
-        logger.error("Config file not found: %s", pyproject_path)
-        raise FileNotFoundError(f"pyproject.toml not found: {pyproject_path}")
+        logger.error(
+            "Config file not found: %s", pyproject_path
+        )
+        raise FileNotFoundError(
+            f"pyproject.toml not found: {pyproject_path}"
+        )
 
     with pyproject_path.open("rb") as f:
         data = tomllib.load(f)

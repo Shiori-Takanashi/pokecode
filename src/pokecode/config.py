@@ -8,7 +8,11 @@ import logging
 import os
 from pathlib import Path
 
-from pokecode.paths import DOT_ENV, DOT_ENV_LOCAL, PROJECT_ROOT
+from pokecode.paths import (
+    DOT_ENV,
+    DOT_ENV_LOCAL,
+    PROJECT_ROOT,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -68,11 +72,15 @@ class ConfigGetter:
 
     def get_debug_log_dir(self) -> Path:
         """デバッグログディレクトリを取得"""
-        return Path(_get_env("POKECODE_DEBUG_LOG_DIR", "debug_log"))
+        return Path(
+            _get_env("POKECODE_DEBUG_LOG_DIR", "debug_log")
+        )
 
     def get_debug_log_file(self) -> str:
         """デバッグログファイル名を取得"""
-        return _get_env("POKECODE_DEBUG_LOG_FILE", "debug.log")
+        return _get_env(
+            "POKECODE_DEBUG_LOG_FILE", "debug.log"
+        )
 
     def get_host(self) -> str:
         """サーバーホストを取得"""
@@ -84,22 +92,32 @@ class ConfigGetter:
 
     def get_local_html_url(self) -> str:
         """ローカル HTML API URL を取得"""
-        return _get_env("POKECODE_LOCAL_HTML_URL", "http://localhost:5000")
+        return _get_env(
+            "POKECODE_LOCAL_HTML_URL",
+            "http://localhost:5000",
+        )
 
     def get_local_json_url(self) -> str:
         """ローカル JSON API URL を取得"""
-        return _get_env("POKECODE_LOCAL_JSON_URL", "http://localhost:5000/json")
+        return _get_env(
+            "POKECODE_LOCAL_JSON_URL",
+            "http://localhost:5000/json",
+        )
 
     def get_domain(self) -> str:
         """本番でのurlを取得"""
         url = _get_env("DOMAIN", "None")
         if url == "None":
-            raise RuntimeError("URLを環境変数から読み込むことに失敗。")
+            raise RuntimeError(
+                "URLを環境変数から読み込むことに失敗。"
+            )
         return url
 
     def get_output_file(self, name: str) -> Path:
         """出力ファイルパスを取得"""
-        default_output = str(PROJECT_ROOT / "output" / f"{name}.json")
+        default_output = str(
+            PROJECT_ROOT / "output" / f"{name}.json"
+        )
         return Path(_get_env("OUTPUT_FILE", default_output))
 
     # def get_all(self) -> dict:

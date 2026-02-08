@@ -30,7 +30,9 @@ def main():
             countries = json.load(f)
         logger.info(f"読み込み完了: {len(countries)}件")
     except FileNotFoundError:
-        logger.error(f"ファイルが見つかりません: {input_file}")
+        logger.error(
+            f"ファイルが見つかりません: {input_file}"
+        )
         return
     except json.JSONDecodeError as e:
         logger.error(f"JSONの解析に失敗: {e!r}")
@@ -41,13 +43,17 @@ def main():
 
     # 翻訳実行
     logger.info("翻訳を開始します...")
-    translated = service.translate_countries_batch(countries, batch_size=10)
+    translated = service.translate_countries_batch(
+        countries, batch_size=10
+    )
     logger.info("翻訳完了")
 
     # JSONファイルに保存
     try:
         with open(output_file, "w", encoding="utf-8") as f:
-            json.dump(translated, f, ensure_ascii=False, indent=2)
+            json.dump(
+                translated, f, ensure_ascii=False, indent=2
+            )
         logger.info(f"結果を保存: {output_file}")
     except Exception as e:
         logger.error(f"ファイルの保存に失敗: {e!r}")
@@ -57,7 +63,9 @@ def main():
     logger.info("=== 翻訳統計 ===")
     logger.info(f"総国数: {len(translated)}")
     translated_count = sum(
-        1 for c in translated if c.get("country_name") != c.get("country_name_ja")
+        1
+        for c in translated
+        if c.get("country_name") != c.get("country_name_ja")
     )
     logger.info(f"翻訳された国: {translated_count}")
 
