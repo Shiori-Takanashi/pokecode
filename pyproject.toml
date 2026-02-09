@@ -10,7 +10,6 @@ requires-python = ">=3.14"
 dependencies = [
     "beautifulsoup4>=4.14.3",
     "flask>=3.1.2",
-    "mypy>=1.19.1",
     "openai>=2.17.0",
     "pillow>=12.1.0",
     "pytest>=9.0.2",
@@ -18,6 +17,8 @@ dependencies = [
     "qrcode>=8.2",
     "requests>=2.32.5",
     "ruff>=0.14.14",
+    "types-qrcode>=8.2.0.20250914",
+    "types-requests>=2.32.4.20260107",
 ]
 
 [project.scripts]
@@ -54,12 +55,34 @@ line-length = 80
 # チェック対象から除外するパス
 exclude = [
     ".git",
+    ".legacy",
+    ".mypy_cache",
+    ".pytest_cache",
     ".ruff_cache",
     ".venv",
+    "venv",
     "__pycache__",
     "build",
     "dist",
-    ".legacy"
+]
+
+[tool.mypy]
+
+python_version = "3.14"
+strict = "true"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = false
+
+exclude = [
+    "^.venv/",
+    "^venv/",
+    "^__pycache__/",
+    "^.mypy_cache/",
+    "^.pytest_cache/",
+    "^.ruff_cache/",
+    "^build/",
+    "^dist/",
 ]
 
 [build-system]
@@ -68,6 +91,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "mypy>=1.19.1",
     "ruff>=0.14.14",
     "taskipy>=1.14.1",
 ]

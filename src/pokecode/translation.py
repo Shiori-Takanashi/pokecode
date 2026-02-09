@@ -68,7 +68,7 @@ class TranslationService:
             batch_size: 1回のAPI呼び出しで処理する国の数
 
         Returns:
-            country_en_jaフィールドが追加された国情報のリスト
+            country_jaフィールドが追加された国情報のリスト
         """
         result = []
         country_ens = [c["country_en"] for c in countries]
@@ -92,7 +92,7 @@ class TranslationService:
             country_copy = country.copy()
             country_en = country["country_en"]
             ja_name = self.cache.get(country_en) or country_en
-            country_copy["country_en_ja"] = ja_name
+            country_copy["country_ja"] = ja_name
             result.append(country_copy)
 
         return result

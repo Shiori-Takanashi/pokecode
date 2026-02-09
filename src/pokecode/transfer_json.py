@@ -12,7 +12,7 @@ from pokecode.paths import PROJECT_ROOT
 
 # ハードコードは後に削除すべき
 TARGET_DIR = PROJECT_ROOT / "output"
-TARGET_JSON = TARGET_DIR / "country_en.json"
+TARGET_JSON = TARGET_DIR / "country_ja.json"
 
 mlogger = logging.getLogger(__name__)
 
@@ -76,5 +76,5 @@ def extract(data: list[dict], keyname: str) -> list[str]:
 
 def all_process() -> list[str]:
     data = get_raw_data()
-    result = extract(data, "output/country_ja.json")
+    result = extract(data, "country_ja")
     return result

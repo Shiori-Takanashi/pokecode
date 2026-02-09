@@ -50,8 +50,8 @@ def main() -> None:
             len(html),
         )
         soup = make_soup(html)
-        html = scrape_html(soup)
-        cards = scrape_cards_from_html(html)
+        html_element = scrape_html(soup)
+        cards = scrape_cards_from_html(html_element)
         card_of_filter = scrape_correct_card(cards, "🔍 Filter Friend Codes")
         select = scrape_selection(card_of_filter)
         options = scrape_options(select)
@@ -106,9 +106,6 @@ def main() -> None:
             if c is not None
         ]
 
-        # for u in urls_with_code:
-        #     logger.debug(u)
-
         save_json(
             urls_with_code,
             cget.get_output_file("urls"),
@@ -117,8 +114,8 @@ def main() -> None:
         for url in urls_with_code:
             res = request_html(url)
             soup = make_soup(res)
-            html = scrape_html(soup)
-            cards = scrape_cards_from_html(html)
+            html_element = scrape_html(soup)
+            cards = scrape_cards_from_html(html_element)
             card = scrape_correct_card(cards, "📱 Friend Codes")
             trainers = scrape_trainers(card)
             friends_codes = [
