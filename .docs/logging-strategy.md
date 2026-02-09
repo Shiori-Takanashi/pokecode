@@ -38,7 +38,7 @@ def setup_logging(
     logger: Logger,
     level: str = "INFO",
     logdir_name: str = "logs",
-    logname_prefix: str = "app",
+    logname: str = "app",
 ) -> None:
     """
     logger をセットアップ
@@ -47,7 +47,7 @@ def setup_logging(
     例: app.log.2026-02-06
     """
     # 実行日の日付を含むファイル名を生成
-    logname = f"{logname_prefix}.log.{datetime.now():%Y-%m-%d}"
+    logname = f"{logname}.log.{datetime.now():%Y-%m-%d}"
     filepath = _resolve_logfile(logdir_name=logdir_name, logname=logname)
 
     # ...フォーマッター設定など...
