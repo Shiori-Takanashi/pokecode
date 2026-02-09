@@ -34,6 +34,57 @@ from pokecode.transfer_json import all_process
 
 
 def main() -> None:
+    """ポケモンGOフレンドコード収集のメイン処理。
+
+    この関数は以下の処理フローを実行する：
+
+    1. ロガーのセットアップとアプリケーション開始ログの出力
+
+    2. 設定ファイル (pyproject.toml) の読み込みと ConfigGetter の初期化
+
+    3. ドメインのトップページから国コードのリストを取得
+       - HTMLをリクエストしてBeautifulSoupでパース
+       - "🔍 Filter Friend Codes" カードからselectタグを探索
+       - optionタグから国名とISO Alpha-3コードを抽出
+       - 余分な文字（絵文字など）を除去して正規化
+
+    4. 英語の国コードリストを country_en.json として保存
+
+    5. 翻訳処理
+       - TranslationService を使用して国名を日本語に翻訳
+       - バッチサイズ10でキャッシュを利用しながら翻訳
+       - 英語の国名キーを削除して country_ja.json として保存
+
+    6. 日本固有のデータ処理
+       - all_process() で日本のフレンドコードデータを処理
+       - japanese.json として保存
+
+    7. 各国のフレンドコードページURLの生成
+       - ISO Alpha-3コードを使用してURLを構築
+       - urls.json として保存
+
+    8. 各国のフレンドコード収集（現在は最初のURLのみ実行してbreak）
+       - 各URLにアクセスして "📱 Friend Codes" カードを取得
+       - トレーナー情報からフレンドコードを抽出
+       - 空文字列でないコードのみをフィルタリング
+       - URLの末尾3文字（国コード）をファイル名として保存
+
+    エラー処理：
+    - すべての例外を catch して logger.exception でログ出力
+    - sys.exit(1) でエラー終了
+
+    Raises:
+        ValueError: URLの末尾が3文字でない場合（国コード取得失敗）
+        その他、各関数内で発生する可能性のある例外
+            - RuntimeError: HTMLパース失敗
+            - TypeError: 期待する要素の型が不正
+            - 各種HTTPエラーやネットワークエラー
+
+    Note:
+        現在はフレンドコード収集ループの最初でbreakしているため、
+        実際には1つの国のデータのみを取得している。
+        全国のデータを取得する場合はbreakを削除する必要がある。
+    """
     logger = logging.getLogger("pokecode")
     setup_logging(logger=logger, level="DEBUG")
 
