@@ -24,9 +24,11 @@ def _resolve_logfile(*, logdir_name: str, logname: str) -> Path:
 def setup_logging(
     *,
     logger: Logger,
+    # 引数で導入したい
+    # new_file: bool = False,
     level: str = "INFO",
     logdir_name: str = "logs",
-    logname_prefix: str = "app",
+    logname: str = "app",
 ) -> None:
     """
     logger をセットアップ
@@ -62,10 +64,10 @@ def setup_logging(
 
     sh.setFormatter(formatter)
 
-    # FileHandler（重複チェック）
-    logname = f"{logname_prefix}.log.{datetime.now():%Y-%m-%d}"
+    logname = f"{logname}.log.{datetime.now():%Y-%m-%d}"
     filepath = _resolve_logfile(logdir_name=logdir_name, logname=logname)
 
+    # FileHandler（重複チェック）
     fh = None
     for h in logger.handlers:
         if (

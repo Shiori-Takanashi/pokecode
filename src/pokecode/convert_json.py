@@ -1,24 +1,13 @@
+import logging
 import json
 from pathlib import Path
 from typing import Any, TypeGuard
 
+from pokecode.logconfig import setup_logging
 
 JsonResult = dict | list
 
-
-def is_json_structure(obj: Any) -> TypeGuard[JsonResult]:
-    """オブジェクトが JSON として有効な構造か判定する。
-
-    JSON として扱える最上位構造は dict または list に限定されるため、
-    それ以外の型は不正とみなす。
-
-    Args:
-        obj: 検証対象のオブジェクト。
-
-    Returns:
-        bool: obj が dict または list の場合 True。
-    """
-    return isinstance(obj, (dict, list))
+logger = logging.getLogger(__name__)
 
 
 def load_json(json_path: Path) -> JsonResult:
@@ -39,8 +28,20 @@ def load_json(json_path: Path) -> JsonResult:
         TypeError: JSON の最上位構造が dict または list でない場合。
         RuntimeError: JSON データが空の場合。
     """
-    with json_path.open("r", encoding="utf-8") as f:
-        data = json.load(f)
+    setup_logging(logger=logger)
+
+    try:
+        with json_path.open("r", encoding="utf-8") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        logger.error(f"JSON file not found: {json_path}")
+        raise
+    except json.JSONDecodeError as e:
+        logger.error(f"Failed to parse JSON file: {json_path}, error: {e}")
+        raise
+    except Exception as e:
+        logger.error(f"Unexpected error while loading JSON file: {json_path}, error: {e}")
+        raise
 
     # JSON の最上位構造を検証する
     if not is_json_structure(data):
@@ -53,3 +54,18 @@ def load_json(json_path: Path) -> JsonResult:
         raise RuntimeError("JSON data is empty.")
 
     return data
+
+
+def is_json_structure(obj: Any) -> TypeGuard[JsonResult]:
+    """オブジェクトが JSON として有効な構造か判定する。
+
+    JSON として扱える最上位構造は dict または list に限定されるため、
+    それ以外の型は不正とみなす。
+
+    Args:
+        obj: 検証対象のオブジェクト。
+
+    Returns:
+        bool: obj が dict または list の場合 True。
+    """
+    return isinstance(obj, (dict, list))
