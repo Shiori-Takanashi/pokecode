@@ -116,3 +116,5 @@ lesson
 output/*.json
 .cache
 output
+
+.diff
