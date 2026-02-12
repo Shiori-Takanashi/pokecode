@@ -3,7 +3,7 @@ import os
 
 from dotenv import load_dotenv
 
-from pokecode.cache import TranslationCache
+from pokecode.translate_cache import TranslationCache
 from pokecode.logconfig import setup_logging
 
 logger = logging.getLogger(__name__)
