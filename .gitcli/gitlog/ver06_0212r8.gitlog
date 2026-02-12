@@ -1,0 +1,698 @@
+commit 0720f2141734e1944b50e02ee04495ddd726e786
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 16:47:24 2026 +0900
+
+    src配下の整理完了
+
+commit ffe5a08a124b1fc2677793cc849618650a01cd14
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 16:45:05 2026 +0900
+
+    format
+
+commit e18eba218be4098affe795572940dab847d25a3e
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 16:42:44 2026 +0900
+
+    del: Makefile: pythonを使いたいので
+
+commit aaf5d40e35c816224c8dfe7e796114254d8333e0
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 15:33:27 2026 +0900
+
+    mapに必要なdata
+
+commit 1c0818608fc88a4c68fc90c43ec10a52e2042b1d
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 15:30:03 2026 +0900
+
+    mloggerという妙な命名をloggerに変更
+
+commit 5bfccb07b873b1687aed1eeda4147c0885c742cf
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 14:38:27 2026 +0900
+
+    kmlパスを取得する関数を追加 & 出力ファイルパスの拡張子を指定可能に
+
+commit 56963f54242a72fedbb0a7dadc24137aec1fcb23
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 14:34:25 2026 +0900
+
+    CORE: version06ブランチにてkml処理を追加
+
+commit 38adc613ebba5ad6ea485572e1ec0736a05b3949
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 14:08:26 2026 +0900
+
+    翻訳の中核モジュールをコメントアウト。mainが今まで通り動くよう維持
+
+commit 91c5cf17a0033ff07dc14cf4680f0b80191269bf
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 14:05:38 2026 +0900
+
+    翻訳についてモジュール化が難航
+
+commit 879b71783d5bfa94fe69409cff22751c647eae1a
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 12:54:36 2026 +0900
+
+    git系の出力結果ディレクトリを追記
+
+commit 68fbcf95e817cb2d0c8152afab7887d89b3cd674
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 12:43:30 2026 +0900
+
+    lxmlを追加
+
+commit 7bd54dd1c020a18a86fa77856582473e7bce2d63
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 12:41:23 2026 +0900
+
+    .diffを追記
+
+commit b3e6e6642b6aa9b701046046a66d0c6f214266a3
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 12 08:49:35 2026 +0900
+
+    .diffを追加。cliを使用してdiffを見てcommitしていく目的
+
+commit 9626fd716cc8bf153cc790902c4795ae07ee1bb5
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Tue Feb 10 07:34:50 2026 +0900
+
+    version05を終了
+
+commit 00ec0159619fecd852b5d59c1675b448e647b3b0
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Tue Feb 10 07:33:57 2026 +0900
+
+    mainのdostringを詳しく作成
+
+commit 2999245075d28f2e3b219b35387e56a3d2f74ec5
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Tue Feb 10 07:28:42 2026 +0900
+
+    スタブ追加
+
+commit 3b59e1cc1a6108f017c270144d2600a921e2436d
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 9 11:56:05 2026 +0900
+
+    log整理
+
+commit a2fba4902efbc93b1248f2618972e6bb7f1c8238
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 9 11:54:24 2026 +0900
+
+    docs整備
+
+commit cf0644789ddd59436051cc5d187d9a5453d16347
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 9 08:42:27 2026 +0900
+
+    変更
+
+commit ed4f5a6607f25ac10d1d9122ce0d01269b74bc18
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 9 08:41:54 2026 +0900
+
+    cgをcgetに変更 & 一部DEBUGをINFOに変更
+
+commit 9a83cf196106a1fd2c270da45b65cd23c334473b
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 9 08:40:04 2026 +0900
+
+    taskipy追加
+
+commit f7c7b0b6b3f837b598cc90227edad8bd92fdfd95
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 9 01:30:45 2026 +0900
+
+    fix: Fix typos and integrate new features in main.py
+    
+    - Fix typo: counties -> country_en
+    - Fix typo: transrated -> translated
+    - Fix output filenames (countries_translated -> country_ja, url_with_code -> urls)
+    - Simplify friend code output filename (friend_codes_of_{code} -> {code})
+    - Add country_en field removal from translation results
+    - Integrate transfer_json.all_process for Japanese data processing
+    - Add japanese.json output
+
+commit 9977cc2f9f04cc1eca0a5331ff3446954011ee43
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 9 01:30:38 2026 +0900
+
+    feat: Add transfer_json module for JSON data processing
+    
+    - Add type-safe validation functions (is_list_of_dicts, validate_list_of_dicts)
+    - Add get_raw_data to load and validate JSON files
+    - Add extract function to extract values by key
+    - Add all_process as main entry point
+    - Fix typo: county_en.json -> country_en.json
+
+commit 68f1ace092a50aae01a31c9e0ba85a2c23484898
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 9 01:30:32 2026 +0900
+
+    feat: Add ignore_cache parameter to debug script
+    
+    - Add ignore_cache=True to translate_countries_batch call
+    - Allows forcing re-translation during debug
+
+commit 292a260ad4c486f1c7b68fe6020777f07396fc42
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 9 01:30:24 2026 +0900
+
+    refactor: Rename field from country_name to country_en
+    
+    - Update scraping.py: country_name -> country_en
+    - Update translation.py: country_name -> country_en
+    - Update translation.py: country_name_ja -> country_en_ja
+    - Update method name: translate_country_name -> translate_country_en
+
+commit 23734e2ceb61829819a8239654f70d487fafb982
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 9 01:30:19 2026 +0900
+
+    refactor: Remove hardcoded constants from search_json.py
+    
+    - Remove TARGET_DIR and TARGET_JSON constants
+    - Make check_exist_json() accept path parameter
+    - Remove if __name__ == '__main__' block
+
+commit 5f09ed1f549c115415209b291d618f43a27f61d5
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sun Feb 8 22:11:26 2026 +0900
+
+    json用のモジュール
+
+commit 0e226215bf739575d3424eef6b92f41a23863c8d
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sun Feb 8 22:11:00 2026 +0900
+
+    ruffの長さを変更
+
+commit 99a21a8af01563c6b2dccf866efd06bee7dec874
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sun Feb 8 18:04:23 2026 +0900
+
+    ruff設定を改善して50行に制限
+
+commit 7aec3cb2d658906d792fafec7744254e5642ab1e
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 21:40:26 2026 +0900
+
+    docs: Update PROJECT_STATUS.md to reflect PHASE08 completion
+
+commit 24aa7033667e38736f12b52b6d42eaf5165e024d
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 21:39:19 2026 +0900
+
+    docs: Add PHASE08 progress summary with detailed commit breakdown
+
+commit 50d57d2f0d89df33cf93c6227647dc3b4914301c
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 21:38:07 2026 +0900
+
+    feat: Integrate translation and friend code extraction in main flow
+
+commit d8cd9f053733f3149d6810cd0b559b3f5431b796
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 21:38:02 2026 +0900
+
+    feat: Enhance translation service with cache control and improved prompts
+
+commit 4e85b36cf50fe90a55401152f729a8307ca7a554
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 21:37:58 2026 +0900
+
+    feat: Add URL builder module for country code based URLs
+
+commit 1e76b517725272af3d07ffda189e3a910ac166f8
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 21:37:53 2026 +0900
+
+    refactor: Convert config functions to ConfigGetter class
+
+commit de057ef4f15ae4cc1708b46e8de6f5aa71d83d1f
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 21:37:48 2026 +0900
+
+    feat: Add delete method to TranslationCache for cache clearing
+
+commit b6eac0e99d378b303e7c8a79647ff7ab1eb113d9
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 21:37:44 2026 +0900
+
+    refactor: Remove unused functions and type alias from scraping module
+
+commit e1569222a9a59b69887a7d79c18b46e091516b63
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 21:37:39 2026 +0900
+
+    refactor: Remove unused type alias HtmlResult from request_html
+
+commit 38aab4d0a75d9b79d13fcd7e058f9e88a2454982
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 21:37:32 2026 +0900
+
+    docs: Add PHASE08 documentation - scraping integration and translation expansion
+
+commit 66f50e12b5fb911f30d398a57f3684a6ad1afe82
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 21:37:27 2026 +0900
+
+    chore: Remove .docs from .gitignore
+
+commit b00415b2326522d761f441ace3bef18abd1df356
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 02:31:17 2026 +0900
+
+    chore: 出力ファイルの追跡を停止
+    
+    - output/codes.jsonをgit追跡から除外
+
+commit d06e23e6f6d929ad91f44b5eef6562394b51fa6d
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 02:30:54 2026 +0900
+
+    chore: .gitignoreに出力ファイルとキャッシュを追加
+    
+    - output/*.jsonを無視
+    - .cache/ディレクトリを無視
+
+commit b6c6a498d2f8c128071e5de98acd5ace7e0b6eac
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 02:30:31 2026 +0900
+
+    feat: ログファイル名に日付を自動追加
+    
+    - lognameパラメータをlogname_prefixに変更
+    - ログファイル名に現在の日付を含めるように修正
+
+commit 4debe6571b442db0f8f8d620195a1d5ab367a58e
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 02:30:25 2026 +0900
+
+    feat: 出力ファイル名にサフィックスを追加できるように修正
+    
+    - get_output_file関数にsuffixパラメータを追加
+    - 出力ファイル名を動的に生成可能に
+
+commit e951338dedbba1f76a691dea7b9aa0bf76d87155
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 02:30:14 2026 +0900
+
+    chore: 依存関係を追加
+    
+    - openai: OpenAI APIクライアント
+    - python-dotenv: 環境変数管理
+
+commit 1122259adb846c98e7a27fff82ff3bd1d81be7eb
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 02:30:09 2026 +0900
+
+    feat: 翻訳デバッグスクリプトを追加
+    
+    - result01.jsonから国名を読み込み
+    - 翻訳サービスを使用して日本語に翻訳
+    - country_ja.jsonに結果を保存
+    - 翻訳統計情報を表示
+
+commit b48139f46a1c59b88a3174a6714085304b661f1c
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 02:30:01 2026 +0900
+
+    feat: OpenAI APIを使用した国名翻訳機能を追加
+    
+    - TranslationServiceクラスを実装
+    - バッチ翻訳機能（最大10国/リクエスト）
+    - python-dotenvで環境変数を読み込み
+    - 日本語プロンプトでGPT APIを呼び出し
+
+commit 91f143fae44bc5550f3436076d7173a275b0951c
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 02:29:55 2026 +0900
+
+    feat: 翻訳キャッシング機構を追加
+    
+    - TranslationCacheクラスを実装
+    - JSONファイルで翻訳結果を永続化
+    - load/save/get/setメソッドを提供
+
+commit bb4a9456471a9efa5ce18c820e83b809072bedb0
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 02:29:49 2026 +0900
+
+    fix: 国フィルターのスクレイピングフローを修正
+    
+    - scrape_selectionを追加してセレクトボックスを特定
+    - カード内の全てのoptionではなく、特定のセレクトボックス内のoptionのみを取得
+    - Noneを除外するリスト内包表記を追加
+
+commit 591c58ac8312f5f196d982fbf54051706f4fe3e8
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Feb 7 02:29:42 2026 +0900
+
+    fix: 国名フィルタリングの改善
+    
+    - 正規表現にアクセント付きラテン文字（À-ÿ）を追加
+    - iso_alpha3が3文字でない場合を除外するバリデーションを追加
+    - 辞書のキーではなく値のみをチェックするように修正
+
+commit 4fb19eb0d1148cf4dfda912b8a2fdca639b2654b
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 17:38:15 2026 +0900
+
+    logconfigを整理せよ
+
+commit 831ae24eb14c73d321c931bb09eb1696b86c9fd1
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 17:23:04 2026 +0900
+
+    chore: 出力ファイルを更新
+
+commit f8c77b434d14bd1d1d86dbf85e2c12875e40f0c3
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 17:22:57 2026 +0900
+
+    feat: サーバーテンプレートを更新
+
+commit e4978a263be98f098ad7f507674e532182d9106c
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 17:22:29 2026 +0900
+
+    feat: User-Agentヘッダーとタイムアウト設定を改善
+
+commit 34c8f9f1c162904336fc1fa475f162cb11c3a781
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:54:47 2026 +0900
+
+    chore: update test output with new sample friend codes
+
+commit c24a8416c106130da31fa29d9307117b95b04215
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:54:42 2026 +0900
+
+    feat: switch to local development mode with localhost URLs
+
+commit 5459bab37e03e4c915bd6ebf154a235496309c0c
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:54:37 2026 +0900
+
+    feat: redesign UI with modern card layout and styling
+
+commit 95b894e264d50066f78fe510b452f899a3cb5826
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:54:31 2026 +0900
+
+    feat: add server module __init__.py
+
+commit 6c685e27fed63caaa2eb2a9662d2bb151e09baf5
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:54:26 2026 +0900
+
+    docs: add GitHub Actions Flask testing guide
+
+commit ca745234d2f5cd8118cee046312c155e09201a0c
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:30:20 2026 +0900
+
+    refactor: move paths.py to server/utils directory
+
+commit 89863c4d39f858996fec2d3aa65cb0706792977d
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:29:29 2026 +0900
+
+    refactor: move create_qr.py to server/utils directory
+
+commit 86dc2ba8f71bcf7989b933d73320ee8fc6ffff65
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:25:55 2026 +0900
+
+    fix: test
+
+commit 14f8d48f29fe33a03ff07d5749c326cac7934af2
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:24:22 2026 +0900
+
+    md整理
+
+commit d17dbf99349e5e4cd3534488db6e8b4551872d64
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:21:47 2026 +0900
+
+    ignore
+
+commit 56b809343111bf913f894a4bc718963c27a09d99
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:21:14 2026 +0900
+
+    fix: .gitignore
+
+commit eb455b84c5eb91773072f37683b7d15efbc41052
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:18:53 2026 +0900
+
+    ignoreした
+
+commit 633c941fae97848a0245fea6c9d2237a5feae809
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 14:15:31 2026 +0900
+
+    io機能を搭載
+
+commit 6a9ee4fded8fdcb2eba47247462fceb4f2319787
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Feb 6 12:49:18 2026 +0900
+
+    トレーナー数の取得まで実装
+
+commit 5966cb6cd40a8c1f675677e14e6a461bda331214
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 5 23:56:39 2026 +0900
+
+    refactor: 依存関係を簡潔化（paths.py を分離）
+    
+    - paths.py 新規作成: プロジェクトパス定数を管理
+    - config.py: getpath への直接依存を削除
+    - loading.py, logconfig.py, main.py: paths から定数をインポート
+    
+    Before: config → getpath (強結合)
+    After:  getpath → paths → config (弱結合)
+    
+    これにより責任分離が明確になり、テストもしやすくなりました。
+
+commit 5d776f5f4ed318ef413aa88d2ff6efec09b10e64
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 5 23:47:02 2026 +0900
+
+    docs: プロジェクト開発方針・ロードマップを追加
+    
+    - PROJECT_STATUS.md: 現在の状態と次のステップ
+    - DEVELOPMENT_ROADMAP.md: PHASE08-16の詳細ロードマップ
+    - CONTRIBUTION_GUIDE.md: 開発プロセスと実装パターン
+    
+    これらのドキュメントから、どのように改善していくかの
+    方向性が明確になります。
+
+commit 8e885910a749d3d1078655528dcae6b97f4868a5
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 5 23:42:51 2026 +0900
+
+    PHASE07: 設定管理をシンプルな関数型に統一（Pylance エラー 0 化）
+
+commit 9244da7d3315030c768593ca34fa7c3dd7bb800f
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 5 23:38:32 2026 +0900
+
+    PHASE06: Config クラスのメソッド形式への統一（動的な設定取得）
+
+commit 48a26a9910409317425ae1be1ede2b3653308d26
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 5 23:30:45 2026 +0900
+
+    PHASE06: 設定管理のリファクタリング（.env対応、Config統合）
+    
+    実装内容:
+    
+    1. getpath.py のクリーンアップ
+       - テスト用の実行コードを削除
+       - 関数定義のみに整理
+       - docstring を追加
+    
+    2. config.py の拡張
+       - Config クラスを定義
+       - 環境変数読み込み（python-dotenv対応）
+       - .env ファイル対応（.env.local優先）
+       - デフォルト値の一元管理
+       - to_dict(), log_current() メソッド
+    
+    3. loading.py の改善
+       - Config クラスを使用
+       - get_app_config() 関数を追加
+    
+    4. logconfig.py の修正
+       - Config.PROJECT_ROOT を使用
+    
+    5. main.py の修正
+       - Config クラスを使用
+       - URL を Config.LOCAL_HTML_URL から取得
+    
+    6. server/ の改善
+       - paths.py: TEMPLATES_DIR を追加
+       - app.py: 関数名を改善、template フォルダ指定
+    
+    7. pyproject.toml の更新
+       - python-dotenv を依存に追加
+       - [tool.pokecode] をシンプル化
+    
+    8. 新規ファイル
+       - .env.example: 環境変数設定テンプレート
+    
+    9. .gitignore の更新
+       - .env* を無視（.env.example は除外）
+    
+    優先順位（設定値決定）:
+    環境変数 → .env.local → .env → デフォルト値
+
+commit 68422d04e8aa327ab8f152d07911ac59a48e8398
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Thu Feb 5 23:25:24 2026 +0900
+
+    プロジェクト整理: request_html実装とドキュメント化（PHASE01-05）
+    
+    PHASE02:
+    - request_html.py を完全実装
+    - request_json.py と同等のエラーハンドリング
+    - 3 種類のエラークラス定義
+    
+    PHASE03:
+    - main.py を整理、コメント化コード削除
+    - request_html を正しく統合
+    - ログ出力を改善
+    
+    新規ドキュメント:
+    - .docs/phase/PHASE01.md: プロジェクト状況整理
+    - .docs/phase/PHASE02.md: request_html実装完成
+    - .docs/phase/PHASE03.md: リクエスト処理統合理解
+    - .docs/phase/PHASE04.md: ログシステム検証計画
+    - .docs/phase/PHASE05.md: 統合テスト計画
+    - README_PROGRESS.md: 進捗サマリー
+    
+    修正:
+    - .gitignore: .docs/ の無視を解除（phase ドキュメント追跡用）
+
+commit 07a9383108c3c1d95e46b803ced3f51ae32ffca8
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Tue Feb 3 17:32:45 2026 +0900
+
+    requestのjsonを未理解。
+
+commit 2ac070490f200a6b5b60459c5f506cd1ff4a320e
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 2 22:34:55 2026 +0900
+
+    mainの例外を整理
+
+commit 5defe871cbffa3370421608a5c7d22d8325e7cb1
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 2 22:26:16 2026 +0900
+
+    main未整理
+
+commit 158f261072f2dfa6872d17c27a2f9e94134d6f5d
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 2 19:28:21 2026 +0900
+
+    legacyを訂正
+
+commit c092baf146e1ec763ab2c9107903f39c39724e20
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 2 19:25:44 2026 +0900
+
+    mypyをactionsから省略
+
+commit 2e5a9393832473dae6a7083d5e6e476576416d53
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 2 19:24:08 2026 +0900
+
+    actionsを導入
+
+commit ecdf517a6a86fbf30e94cebe5bc436141db413ad
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 2 19:19:45 2026 +0900
+
+    pytestも整理
+
+commit ad9d627a932f920e87dab67b8e98af36e95f941c
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Feb 2 19:06:35 2026 +0900
+
+    整理完了
+
+commit 215ff04a046eabaecd77bc851826952ac7c47128
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Jan 31 19:15:48 2026 +0900
+
+    _appを_lagecyに移動
+
+commit ad642756ba5aca65d3b168deeed6d14c2cff4f90
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Jan 31 19:14:52 2026 +0900
+
+    docsを排除
+
+commit d8aa1db5b90a5612d22137c6542a617533dd6fdb
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Jan 31 19:13:40 2026 +0900
+
+    整理
+
+commit 03bb2ecdc8b622fd8738514a535352295fb0e0f0
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Jan 30 13:36:39 2026 +0900
+
+    まとめ
+
+commit 5032433e59d43c1246d8ff8d5acd5fa1a5a4d411
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Fri Jan 30 00:27:38 2026 +0900
+
+    loggerから出力されない
+
+commit 54d1b297e6152b4878db527c3d56389e4cff1e61
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Wed Jan 28 05:25:42 2026 +0900
+
+    仮の動作を検証
+
+commit 43153575756751a99ac5517c271fd691f807af83
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Tue Jan 27 11:09:37 2026 +0900
+
+    debugしてみた
+
+commit b99e7199e508cd5b546937dc75b6d97d1a53bcd7
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Mon Jan 26 15:26:42 2026 +0900
+
+    試行錯誤
+
+commit 8011a99639a0059012dd2c71c5ea1aecca3e146d
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sun Jan 25 09:54:40 2026 +0900
+
+    log問題が未解決
+
+commit 8eb64047d14485fafb186f059e2e8f4052d83cc3
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Jan 24 23:02:56 2026 +0900
+
+    変更に試行錯誤のさなか
+
+commit 50ffa1b094661d9592e90b5065334802c312a892
+Author: Takanashi <nao69alter@gmail.com>
+Date:   Sat Jan 24 22:27:50 2026 +0900
+
+    first
