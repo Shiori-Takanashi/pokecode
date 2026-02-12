@@ -117,4 +117,4 @@ output/*.json
 .cache
 output
 
-.diff
+.diff/
