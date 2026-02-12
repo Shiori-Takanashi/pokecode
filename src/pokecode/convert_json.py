@@ -40,7 +40,9 @@ def load_json(json_path: Path) -> JsonResult:
         logger.error(f"Failed to parse JSON file: {json_path}, error: {e}")
         raise
     except Exception as e:
-        logger.error(f"Unexpected error while loading JSON file: {json_path}, error: {e}")
+        logger.error(
+            f"Unexpected error while loading JSON file: {json_path}, error: {e}"
+        )
         raise
 
     # JSON の最上位構造を検証する
