@@ -27,7 +27,7 @@ from pokecode.url_builder import (
 from pokecode.config import ConfigGetter
 from pokecode.paths import PYPROJECT
 from pokecode.io_writing import save_json
-from pokecode.translation import (
+from pokecode.translate_service import (
     TranslationService,
 )
 from pokecode.transfer_json import all_process
