@@ -14,7 +14,7 @@ from pokecode.paths import PROJECT_ROOT
 TARGET_DIR = PROJECT_ROOT / "output"
 TARGET_JSON = TARGET_DIR / "country_ja.json"
 
-mlogger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 def is_list_of_dicts(
@@ -53,14 +53,14 @@ def validate_list_of_dicts(data: Any) -> list[dict]:
 def get_raw_data(
     target_json: Path = TARGET_JSON,
 ) -> list[dict]:
-    setup_logging(logger=mlogger, level="DEBUG")
+    setup_logging(logger=logger, level="DEBUG")
 
     check_exist_json(target_json)
     np = normalize_path(p=target_json)
-    mlogger.debug(f"{np} is found.")
+    logger.debug(f"{np} is found.")
 
     data = load_json(target_json)
-    mlogger.debug(f"{np} is loaded.")
+    logger.debug(f"{np} is loaded.")
 
     # list[dict] の形式であることを検証
     validated_data = validate_list_of_dicts(data)
