@@ -117,4 +117,5 @@ output/*.json
 .cache
 output
 
-.diff/
+.gitdiff/
+.gitlog/
