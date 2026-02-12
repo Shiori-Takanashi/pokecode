@@ -1,3 +1,5 @@
+# src/pokecode/config.py
+
 """プロジェクト設定モジュール
 
 環境変数または .env ファイルから設定値を読み込みます。
@@ -7,6 +9,7 @@
 import logging
 import os
 from pathlib import Path
+from typing import Any
 
 from pokecode.paths import (
     DOT_ENV,
@@ -42,7 +45,7 @@ def _load_env() -> None:
             )
 
 
-def _get_env(key: str, default: str) -> str:
+def _get_env(key: str, default: Any) -> Any:
     """
     環境変数を取得
 
@@ -112,10 +115,20 @@ class ConfigGetter:
             raise RuntimeError("URLを環境変数から読み込むことに失敗。")
         return url
 
-    def get_output_file(self, name: str) -> Path:
+    def get_output_file(self, name: str, ext: str = "json") -> Path:
         """出力ファイルパスを取得"""
-        default_output = str(PROJECT_ROOT / "output" / f"{name}.json")
+        default_output = str(PROJECT_ROOT / "output" / f"{name}.{ext}")
         return Path(_get_env("OUTPUT_FILE", default_output))
+
+    def get_map_file(self, root: Path = PROJECT_ROOT) -> Path:
+        dirname = _get_env("DATA_DIR", "")
+        filename = _get_env("MAP_FILE", "")
+        if dirname == "" or filename == "":
+            raise RuntimeError("恐らく環境変数が定義されていません。")
+        dirpath = root / dirname
+        dirpath.mkdir(exist_ok=True)
+        filepath = dirpath / filename
+        return filepath
 
     # def get_all(self) -> dict:
     #     """すべての設定を辞書で取得 (デバッグ用)"""
