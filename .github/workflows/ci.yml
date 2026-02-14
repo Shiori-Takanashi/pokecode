@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [version01, version02, version03]
+    branches: [version0*]
 
 jobs:
   test:

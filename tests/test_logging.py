@@ -1,9 +1,6 @@
 import logging
 import pytest
-from logging import StreamHandler
-from logging.handlers import (
-    TimedRotatingFileHandler,
-)
+from logging import StreamHandler, FileHandler
 
 from pokecode.logconfig import setup_logging
 
@@ -20,15 +17,13 @@ def test_setup_logging_adds_console_handler():
     console_handlers = [
         h
         for h in configured_handlers
-        if isinstance(h, StreamHandler)
-        and getattr(h, "name", None) == "console"
+        if isinstance(h, StreamHandler) and getattr(h, "name", None) == "stream"
     ]
 
     file_handlers = [
         h
         for h in configured_handlers
-        if isinstance(h, TimedRotatingFileHandler)
-        and getattr(h, "name", None) == "file"
+        if isinstance(h, FileHandler) and getattr(h, "name", None) == "file"
     ]
 
     assert len(console_handlers) == 1

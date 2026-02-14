@@ -49,8 +49,10 @@ def main():
     from pokecode.config import ConfigGetter
 
     cget = ConfigGetter()
-    fp = cget.get_map_file()
-    tree = parse_kml(fp)
+    dirpath = cget.get_data_dir()
+    filename = cget.get_map_file()
+    filepath = dirpath / filename
+    tree = parse_kml(filepath)
     placemarks = find_placemarks(tree)
     names_of_place = get_names_of_place(placemarks)
     logger.debug(f"place: {len(names_of_place)}")

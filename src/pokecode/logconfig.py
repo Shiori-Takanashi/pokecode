@@ -1,34 +1,29 @@
 # pokecode/logconfig.py
 from datetime import datetime
 import logging
+from pokecode.config import ConfigGetter
 from logging import (
     Logger,
     StreamHandler,
     FileHandler,
 )
-from pathlib import Path
 
 from pokecode.paths import PROJECT_ROOT
 
-_CONSOLE_NAME = "console"
-_FILE_NAME = "file"
 
-
-def _resolve_logfile(*, logdir_name: str, logname: str) -> Path:
-    """ログファイルのパスを解決"""
-    logdir = PROJECT_ROOT / logdir_name
-    logdir.mkdir(parents=True, exist_ok=True)
-    return logdir / logname
+def resolve_level(level: str) -> int:
+    try:
+        resolved_level = getattr(logging, level.upper())
+    except AttributeError:
+        raise ValueError(f"Invalid log level: {level}")
+    return resolved_level
 
 
 def setup_logging(
-    *,
     logger: Logger,
-    # 引数で導入したい
-    # new_file: bool = False,
     level: str = "INFO",
-    logdir_name: str = "logs",
-    logname: str = "app",
+    dirname: str | None = None,
+    filename: str | None = None,
 ) -> None:
     """
     logger をセットアップ
@@ -39,53 +34,78 @@ def setup_logging(
         logdir_name: ログディレクトリ名
         logname: ログファイル名
     """
-    fmt = "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
-    datefmt = "%Y-%m-%d %H:%M:%S"
-    formatter = logging.Formatter(fmt=fmt, datefmt=datefmt)
+    cget = ConfigGetter()
 
-    resolved_level = getattr(logging, level.upper(), logging.INFO)
-    logger.setLevel(resolved_level)
+    formatter = logging.Formatter(
+        fmt=cget.get_base_fmt(), datefmt=cget.get_date_fmt()
+    )
+
+    # directoryの処理
+    if dirname is None:
+        dirname = cget.get_dirname_of_log()
+    dirpath = PROJECT_ROOT / dirname
+    dirpath.mkdir(exist_ok=True)
+
+    # fileの処理
+    if filename is None:
+        filename = cget.get_filename_log()
+    full_filename = f"{filename}.log.{datetime.now():%Y-%m-%d}"
+    full_filepath = dirpath / full_filename
+
+    # level設定
+    logger.setLevel(resolve_level(level))
+
+    # propagete設定
     logger.propagate = False
 
     # StreamHandler（重複チェック）
     sh = None
+    stream_hander_name = cget.get_stream_handler_name()
     for h in logger.handlers:
         if (
             isinstance(h, StreamHandler)
-            and getattr(h, "name", None) == _CONSOLE_NAME
+            and getattr(h, "name", None) == stream_hander_name
         ):
             sh = h
             break
 
     if sh is None:
         sh = StreamHandler()
-        sh.name = _CONSOLE_NAME
+        sh.name = stream_hander_name
         logger.addHandler(sh)
 
     sh.setFormatter(formatter)
 
-    logname = f"{logname}.log.{datetime.now():%Y-%m-%d}"
-    filepath = _resolve_logfile(logdir_name=logdir_name, logname=logname)
-
     # FileHandler（重複チェック）
     fh = None
+    file_handler_name = cget.get_file_handler_name()
     for h in logger.handlers:
         if (
             isinstance(h, FileHandler)
-            and getattr(h, "name", None) == _FILE_NAME
+            and getattr(h, "name", None) == file_handler_name
         ):
             fh = h
             break
 
     if fh is None:
         fh = FileHandler(
-            filename=filepath,
+            filename=full_filepath,
             mode="a",
             encoding="utf-8",
             delay=False,
             errors="strict",
         )
-        fh.name = _FILE_NAME
+        fh.name = file_handler_name
         logger.addHandler(fh)
 
     fh.setFormatter(formatter)
+
+
+def main() -> None:
+    logger = logging.getLogger("ForDebug")
+    setup_logging(logger)
+    logger.info("this is debug")
+
+
+if __name__ == "__main__":
+    main()

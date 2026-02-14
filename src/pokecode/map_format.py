@@ -23,7 +23,9 @@ def main() -> None:
     from pokecode.config import ConfigGetter
 
     cget = ConfigGetter()
-    src = cget.get_map_file()
+    outdir = cget.get_data_dir()
+    filename = cget.get_map_file()
+    src = outdir / filename
     dst = cget.get_output_file("map_format", ext="kml")
     format_kml(src, dst)
 

@@ -36,12 +36,6 @@ main = "python -m pokecode.main"
 debug = "python -m pokecode.debug.main"
 server = "python -m server.app"
 
-[tool.pokecode]
-# ログ関連（環境変数 POKECODE_* で上書き可能）
-logdir = "logs"
-logfile = "app.log"
-debug_logdir = "debug_log"
-debug_logfile = "debug.log"
 
 # ローカルサーバー URL（環境変数で上書き可能）
 local_html_url = "http://localhost:5000"

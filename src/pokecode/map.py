@@ -18,19 +18,21 @@ logger = logging.getLogger(__name__)
 def format() -> None:
     setup_logging(logger=logger)
     cget = ConfigGetter()
-    src = cget.get_map_file()
-    dst = cget.get_output_file("map_format", ext="kml")
+    dirpath = cget.get_data_dir()
+    filename = cget.get_map_file()
+    src = dirpath / filename
+    dst = cget.get_output_file("map_format", "kml")
     format_kml(src, dst)
 
 
 def process() -> None:
     setup_logging(logger=logger)
     cget = ConfigGetter()
-    filepath = cget.get_map_file()
+    filepath = cget.get_data_dir() / cget.get_map_file()
     tree = parse_kml(filepath)
     placemarks = find_placemarks(tree)
     cities = get_names_of_place(placemarks)
-    save_json(cities, cget.get_output_file("city_from_map", ext="json"))
+    save_json(cities, cget.get_output_file("city_from_map", "json"))
     return
 
 
