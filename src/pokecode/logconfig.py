@@ -1,111 +1,97 @@
 # pokecode/logconfig.py
+
 from datetime import datetime
 import logging
-from pokecode.config import ConfigGetter
-from logging import (
-    Logger,
-    StreamHandler,
-    FileHandler,
-)
+from logging import Logger, StreamHandler, FileHandler
+from pathlib import Path
 
-from pokecode.paths import PROJECT_ROOT
+from pokecode.config.env import require
+from pokecode.config.paths import PROJECT_ROOT
 
 
-def resolve_level(level: str) -> int:
+def _resolve_level(level: str) -> int:
     try:
-        resolved_level = getattr(logging, level.upper())
+        return getattr(logging, level.upper())
     except AttributeError:
         raise ValueError(f"Invalid log level: {level}")
-    return resolved_level
+
+
+def _get_or_create_stream_handler(
+    logger: Logger,
+    name: str,
+) -> StreamHandler:
+    for h in logger.handlers:
+        if isinstance(h, StreamHandler) and getattr(h, "name", None) == name:
+            return h
+
+    sh = StreamHandler()
+    sh.name = name
+    logger.addHandler(sh)
+    return sh
+
+
+def _get_or_create_file_handler(
+    logger: Logger,
+    name: str,
+    filepath: Path,
+) -> FileHandler:
+    for h in logger.handlers:
+        if isinstance(h, FileHandler) and getattr(h, "name", None) == name:
+            return h
+
+    fh = FileHandler(
+        filename=filepath,
+        mode="a",
+        encoding="utf-8",
+        delay=False,
+        errors="strict",
+    )
+    fh.name = name
+    logger.addHandler(fh)
+    return fh
 
 
 def setup_logging(
     logger: Logger,
-    level: str = "INFO",
+    level: str | None = None,
     dirname: str | None = None,
-    filename: str | None = None,
+    basename: str | None = None,
 ) -> None:
-    """
-    logger をセットアップ
+    # ===== 設定値取得 =====
+    level = level or require("LOG_LEVEL")
+    log_fmt = require("LOG_FMT")
+    log_date_fmt = require("LOG_DATE_FMT")
+    dirname = dirname or require("LOG_DIR")
+    basename = basename or require("LOG_FILE_BASE")
 
-    Args:
-        logger: セットアップ対象の Logger
-        level: ログレベル（"DEBUG", "INFO" など）
-        logdir_name: ログディレクトリ名
-        logname: ログファイル名
-    """
-    cget = ConfigGetter()
+    stream_handler_name = require("STREAM_HANDLER_NAME")
+    file_handler_name = require("FILE_HANDLER_NAME")
 
-    formatter = logging.Formatter(
-        fmt=cget.get_base_fmt(), datefmt=cget.get_date_fmt()
-    )
-
-    # directoryの処理
-    if dirname is None:
-        dirname = cget.get_dirname_of_log()
-    dirpath = PROJECT_ROOT / dirname
-    dirpath.mkdir(exist_ok=True)
-
-    # fileの処理
-    if filename is None:
-        filename = cget.get_filename_log()
-    full_filename = f"{filename}.log.{datetime.now():%Y-%m-%d}"
-    full_filepath = dirpath / full_filename
-
-    # level設定
-    logger.setLevel(resolve_level(level))
-
-    # propagete設定
+    # ===== レベル設定 =====
+    logger.setLevel(_resolve_level(level))
     logger.propagate = False
 
-    # StreamHandler（重複チェック）
-    sh = None
-    stream_hander_name = cget.get_stream_handler_name()
-    for h in logger.handlers:
-        if (
-            isinstance(h, StreamHandler)
-            and getattr(h, "name", None) == stream_hander_name
-        ):
-            sh = h
-            break
+    # ===== formatter =====
+    formatter = logging.Formatter(
+        fmt=log_fmt,
+        datefmt=log_date_fmt,
+    )
 
-    if sh is None:
-        sh = StreamHandler()
-        sh.name = stream_hander_name
-        logger.addHandler(sh)
+    # ===== directory =====
+    dirpath = PROJECT_ROOT / dirname
+    dirpath.mkdir(parents=True, exist_ok=True)
 
+    # ===== file path =====
+    filename = f"{basename}.log.{datetime.now():%Y-%m-%d}"
+    filepath = dirpath / filename
+
+    # ===== handlers =====
+    sh = _get_or_create_stream_handler(logger, stream_handler_name)
     sh.setFormatter(formatter)
 
-    # FileHandler（重複チェック）
-    fh = None
-    file_handler_name = cget.get_file_handler_name()
-    for h in logger.handlers:
-        if (
-            isinstance(h, FileHandler)
-            and getattr(h, "name", None) == file_handler_name
-        ):
-            fh = h
-            break
-
-    if fh is None:
-        fh = FileHandler(
-            filename=full_filepath,
-            mode="a",
-            encoding="utf-8",
-            delay=False,
-            errors="strict",
-        )
-        fh.name = file_handler_name
-        logger.addHandler(fh)
-
+    fh = _get_or_create_file_handler(
+        logger,
+        file_handler_name,
+        filepath,
+    )
     fh.setFormatter(formatter)
-
-
-def main() -> None:
-    logger = logging.getLogger("ForDebug")
-    setup_logging(logger)
-    logger.info("this is debug")
-
-
-if __name__ == "__main__":
-    main()
