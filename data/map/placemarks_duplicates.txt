@@ -1,0 +1,1287 @@
+# Placemark 1 (Niceville, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Niceville, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -86.414596,30.48163,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 2 (Bardejov, Slovakia
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Bardejov, Slovakia
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            21.259881,49.332823,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 3 (Bardejov, Slovakia
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Bardejov, Slovakia
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            21.254192,49.293036,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 4 (Niceville, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Niceville, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -86.424984,30.480902,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 5 (Niles, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Niles, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -86.2703033,41.8577187,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 6 (Houston, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Houston, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -95.373766,29.7563624,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 7 (Springfield, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Springfield, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -89.6501481,39.7817213,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 8 (New York, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>New York, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -73.8834127,40.6535418,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 9 (New York, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>New York, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -74.0059728,40.7127753,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 10 (Kyle, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Kyle, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -97.8772267,29.9891052,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 11 (Springfield, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Springfield, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -93.2922989,37.2089572,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 12 (Niles, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Niles, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -80.781477,41.184304,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 13 (Warren, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Warren, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -80.828917,41.234175,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 14 (Northfield, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Northfield, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -81.528452,41.3450547,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 15 (Peekskill, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Peekskill, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -73.9204158,41.2900939,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 16 (Columbus, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Columbus, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -82.9987942,39.9611755,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 17 (Atwood, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Atwood, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -101.0421012,39.806668,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 18 (Atwood, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Atwood, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -101.039803,39.805752,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 19 (Kyle, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Kyle, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -97.824708,29.944815,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 20 (Ligonier, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Ligonier, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -85.606092,41.460727,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 21 (Ligonier, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Ligonier, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -85.5956,41.461247,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 22 (Gillette, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Gillette, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -105.493488,44.26725,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 23 (Gillette, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Gillette, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -105.459711,44.229819,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 24 (Annapolis, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Annapolis, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -76.4921829,38.9784453,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 25 (Woodbury, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Woodbury, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -92.9593797,44.9238552,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 26 (Rockton, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Rockton, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -89.106973,42.457202,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 27 (Rockton, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Rockton, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -89.059658,42.468643,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 28 (Woodbury, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Woodbury, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -73.4676225,40.8256545,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 29 (Houston, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Houston, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -95.419616,29.669226,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 30 (Northfield, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Northfield, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -93.161604,44.4582983,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 31 (Steinhöring, Germany
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Steinhöring, Germany
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            12.060327,48.082888,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 32 (Steinhöring, Germany
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Steinhöring, Germany
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            12.061185,48.084213,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 33 (Steinhöring, Germany
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Steinhöring, Germany
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            12.068221,48.101777,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 34 (Niles, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Niles, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -80.765183,41.186586,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 35 (Warren, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Warren, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -89.98783,42.49577,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 36 (Warren, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Warren, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -90.005054,42.495946,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 37 (Annapolis, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Annapolis, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -76.561317,38.991073,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 38 (College Park, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>College Park, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -76.927135,38.980664,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 39 (College Park, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>College Park, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -76.922032,38.978627,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 40 (College Park, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>College Park, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -76.924885,38.974459,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 41 (Grove City, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Grove City, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -80.10739,41.16911,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 42 (Grove City, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Grove City, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -80.083382,41.164418,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 43 (Grove City, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Grove City, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -80.083066,41.189134,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 44 (Limoges, France
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Limoges, France
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            1.244977,45.848846,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 45 (Powell, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Powell, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -108.756532,44.752968,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 46 (Powell, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Powell, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -83.0751869,40.1578402,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 47 (Peekskill, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Peekskill, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -73.9176875,41.2910625,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 48 (Columbus, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Columbus, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -84.9877094,32.4609764,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 49 (Springfield, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Springfield, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -86.7775264,41.7153192,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 50 (Limoges, France
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Limoges, France
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            1.215279,45.80944,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 51 (Casper, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Casper, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -106.312196,42.848819,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 52 (Casper, USA
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Casper, USA
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            -106.28066,42.849009,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 53 (Mèze, France
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Mèze, France
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            3.603898,43.42683,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 54 (Mèze, France
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Mèze, France
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            3.603666,43.427321,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 55 (Mèze, France
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Mèze, France
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            3.601853,43.429018,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
+
+# Placemark 56 (Mèze, France
+)
+<Placemark xmlns="http://www.opengis.net/kml/2.2">
+        <name>Mèze, France
+</name>
+        <description><![CDATA[description: <br>﻿WKT: ]]></description>
+        <styleUrl>#icon-1899-DB4436</styleUrl>
+        <ExtendedData>
+          <Data name="description">
+            <value/>
+          </Data>
+          <Data name="﻿WKT">
+            <value/>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            3.614229,43.431008,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      
