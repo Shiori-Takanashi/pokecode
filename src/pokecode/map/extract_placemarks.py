@@ -33,3 +33,7 @@ def extract_place_names(placemarks: list[_Element]) -> list[str]:
             names.add(name)
 
     return sorted(names)
+
+
+def main() -> None:
+    pass
