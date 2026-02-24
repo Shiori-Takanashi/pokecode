@@ -81,10 +81,13 @@ logs/
 png/
 
 
-# Ruff cache
+# Dev caches (.dev/ に集約)
+.dev/
+
+# Ruff cache (旧パス)
 .ruff_cache/
 
-# MyPy
+# MyPy (旧パス)
 .mypy_cache/
 .dmypy.json
 dmypy.json

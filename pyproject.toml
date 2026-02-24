@@ -35,6 +35,10 @@ fmt = "ruff check --fix . && ruff format ."
 main = "python -m pokecode.main"
 debug = "python -m pokecode.debug.main"
 server = "python -m server.app"
+map-const = "python -m pokecode.map.const"
+map-demo = "python -m pokecode.map.demo"
+map-format = "python -m pokecode.map.format"
+map-xp = "python -m pokecode.map.placemark_extract"
 
 
 # ローカルサーバー URL（環境変数で上書き可能）
@@ -48,13 +52,14 @@ target-version = "py314"
 # 行の最大数
 line-length = 80
 
+# キャッシュを .dev に集約
+cache-dir = ".dev/ruff_cache"
+
 # チェック対象から除外するパス
 exclude = [
+    ".dev",
     ".git",
     ".legacy",
-    ".mypy_cache",
-    ".pytest_cache",
-    ".ruff_cache",
     ".venv",
     "venv",
     "__pycache__",
@@ -70,16 +75,21 @@ warn_return_any = true
 warn_unused_configs = true
 ignore_missing_imports = false
 
+# キャッシュを .dev に集約
+cache_dir = ".dev/mypy_cache"
+
 exclude = [
+    "^.dev/",
     "^.venv/",
     "^venv/",
     "^__pycache__/",
-    "^.mypy_cache/",
-    "^.pytest_cache/",
-    "^.ruff_cache/",
     "^build/",
     "^dist/",
 ]
+
+[tool.pytest.ini_options]
+# キャッシュを .dev に集約
+cache_dir = ".dev/pytest_cache"
 
 [build-system]
 requires = ["uv_build>=0.9.2,<0.10.0"]
